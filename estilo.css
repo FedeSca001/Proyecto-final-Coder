@@ -36,8 +36,8 @@ body {
     display: grid;
     gap: 8px;
     grid-template: 
-    "header" 3%
-    "nav"    15%
+    "header" 15%
+    "nav"    10%
     "article" auto
     "aside"   20%;
 }
@@ -68,6 +68,10 @@ body {
     width: 80%;
     width: 80%;
     margin: 10px;
+}
+.catalogo {
+    height: 25%;
+    display: list-item;
 }
 .catalogo img {
     height: 100px;
