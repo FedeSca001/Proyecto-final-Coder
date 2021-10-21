@@ -40,6 +40,7 @@ function logOk(){
                 const p = document.createElement('p');
                 p.textContent = '¡¡Se deben completar todos los campos!!'
                 header.appendChild(p);
+                return usuarioMenor = true;
             }
             return usuarioOk = true;
 }
