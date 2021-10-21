@@ -3,6 +3,7 @@ const telefUsuario = document.querySelector("#telef");
 const edadUsuario = document.querySelector("#edad");
 const direccionUsuario = document.querySelector("#direcc");
 const registrarse = document.querySelector("#registrar");
+const header = document.querySelector("#headerInput");
 const usuarios = [];
 let listaCarrito = [];
 let usuarioOk = false;
@@ -32,13 +33,15 @@ function logOk(){
     if ((usuarios[usuarios.length-1].edad) &&
         (usuarios[usuarios.length-1].nombre) &&
         (usuarios[usuarios.length-1].telefono) &&
-        (usuarios[usuarios.length-1].direccion)){
-            
+        (usuarios[usuarios.length-1].direccion)){            
             if(usuarios[usuarios.length-1].edad >= 18){
                 return usuarioMenor = false;
-            } else {alert('Al ser menor no vas a poder acceder a todos los productos.');}
-        return usuarioOk = true;
-    }
+            }} else {
+                const p = document.createElement('p');
+                p.textContent = '¡¡Se deben completar todos los campos!!'
+                header.appendChild(p);
+            }
+            return usuarioOk = true;
 }
 
 function printBebidas(){
@@ -119,9 +122,10 @@ function printFarm(){
         catalogo.innerHTML += imprimir;
 });}
 function printCerv(){
-    if (usuarioMenor = true) {
+    if (usuarioMenor == true) {
         catalogo.innerHTML = `<p class="advertmenores">Sos menor de edad y no podés ingresar a esta sección... SOLO MAYORES.</p>`
-    } else {cerv.forEach ( cerv => {
+    } else {
+        cerv.forEach ( cerv => {
         const imprimir = `
         <div class="bloque">
             <img src="${cerv.img}" class="imgBeb">
@@ -136,7 +140,7 @@ function printCerv(){
         catalogo.innerHTML += imprimir;
 })};}
 function printTaba(){
-    if (usuarioMenor = true) {
+    if (usuarioMenor == true) {
         catalogo.innerHTML = `<p class="advertmenores">Sos menor de edad y no podés ingresar a esta sección... SOLO MAYORES.</p>`
     } else {
     tabac.forEach ( tabac => {
@@ -168,7 +172,6 @@ function printGallet(){
         `
         catalogo.innerHTML += imprimir;
 });}
-
 
 
 //CLICK EN BOTONES DE SECCIONES
@@ -217,4 +220,3 @@ registrarse.addEventListener("click", () => {
     nuevoUsuario();
     logOk();
 });
-

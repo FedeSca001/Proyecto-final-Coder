@@ -79,3 +79,7 @@ body {
 #logo {
     height: 400px;
 }
+.bloque {
+    display: inline-block;
+    padding: 30px;
+}

@@ -22,7 +22,7 @@ const beb = [
         "id": 03
     },
     {
-        "img": "images/cocalata",
+        "img": "images/cocalata.jpg",
         "nombre": "Lata de coca cola",
         "descp": "lata fria",
         "precio": "$85",
@@ -57,7 +57,7 @@ const beb = [
         "id": 08
     },
     {
-        "img": "images/spritemedio.jpg",
+        "img": "images/spritemedio.png",
         "nombre": "Sprite 1/2L",
         "descp": "Botella 1/2L",
         "precio": "$120",
@@ -71,7 +71,7 @@ const beb = [
         "id": 010
     },
     {
-        "img": "images/baggiocaja.jpg",
+        "img": "images/baggiocaja.png",
         "nombre": "Baggio grande",
         "descp": "Caja",
         "precio": "$200",
@@ -320,55 +320,83 @@ const cerv = [
 
 const tabac = [
     {
-        "img": "images/",
-        "nombre": "",
-        "descp": "",
-        "precio": "$",
+        "img": "images/luck.jpg",
+        "nombre": "Lucky",
+        "descp": "Cant. 10",
+        "precio": "$130",
         "id": 61
     },
     {
-        "img": "images/",
-        "nombre": "",
-        "descp": "",
-        "precio": "$",
+        "img": "images/luckmen.jpg",
+        "nombre": "Lucky mentolado",
+        "descp": "Cant. 20",
+        "precio": "$220",
         "id": 62
     },
     {
-        "img": "images/",
-        "nombre": "",
-        "descp": "",
-        "precio": "$",
+        "img": "images/marlb.jpg",
+        "nombre": "Marlboro",
+        "descp": "Cant. 20",
+        "precio": "$260",
         "id": 63
     },
     {
-        "img": "images/",
-        "nombre": "",
-        "descp": "",
-        "precio": "$",
+        "img": "images/cam.jpeg",
+        "nombre": "Camel",
+        "descp": "Cant. 20",
+        "precio": "$260",
+        "id": 64
+    },
+    {
+        "img": "images/malb10.png",
+        "nombre": "Marlboro box",
+        "descp": "Cant. 10",
+        "precio": "$130",
+        "id": 64
+    },
+    {
+        "img": "images/cam10.jpg",
+        "nombre": "Camel box",
+        "descp": "Cant 10",
+        "precio": "$135",
         "id": 64
     },
 ];
 
 const gallets = [
     {
-        "img": "images/",
-        "nombre": "",
-        "descp": "",
-        "precio": "$",
+        "img": "images/twist.jpg",
+        "nombre": "Twistos",
+        "descp": "Cont. 50g",
+        "precio": "$135",
         "id": 71
     },
     {
-        "img": "images/",
-        "nombre": "",
-        "descp": "",
-        "precio": "$",
+        "img": "images/9doro.jpg",
+        "nombre": "9 de oro",
+        "descp": "clasicas",
+        "precio": "$75",
         "id": 72
     },
     {
-        "img": "images/",
-        "nombre": "",
-        "descp": "",
-        "precio": "$",
+        "img": "images/9doroagr.jpg",
+        "nombre": "9 de oro Agridulce",
+        "descp": "Agridulce",
+        "precio": "$75",
+        "id": 73
+    },
+    {
+        "img": "images/merengadas.jpg",
+        "nombre": "Merengadas",
+        "descp": "Paquete grande",
+        "precio": "$100",
+        "id": 73
+    },
+    {
+        "img": "images/oreo.jpg",
+        "nombre": "Oreo",
+        "descp": "Grande",
+        "precio": "$140",
         "id": 73
     },
 ];
