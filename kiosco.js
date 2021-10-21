@@ -210,6 +210,7 @@ catalogo.addEventListener('click', (e) => {
         });
 });
 
+//Log usuario
 registrarse.addEventListener("click", () => { 
     nuevoUsuario();
     logOk();
