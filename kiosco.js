@@ -166,6 +166,8 @@ function printGallet(){
         catalogo.innerHTML += imprimir;
 });}
 
+
+
 //CLICK EN BOTONES DE SECCIONES
 divSecciones.addEventListener('click', (e)=>{
     //Primero se elimina el contenido existente
@@ -196,7 +198,6 @@ divSecciones.addEventListener('click', (e)=>{
         printGallet();
     }
 });
-
 
 //El find va a devolver un valor "id" del producto donde hago click
 //Listenner boton compra
