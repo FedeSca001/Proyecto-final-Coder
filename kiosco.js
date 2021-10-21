@@ -213,3 +213,4 @@ registrarse.addEventListener("click", () => {
     nuevoUsuario();
     logOk();
 });
+
