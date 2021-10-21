@@ -37,11 +37,9 @@ function logOk(){
             if(usuarios[usuarios.length-1].edad >= 18){
                 return usuarioMenor = false;
             } else {alert('Al ser menor no vas a poder acceder a todos los productos.');}
-
         return usuarioOk = true;
-    } else {
-        alert('Todos los campos son obligatorios.');
-    }}
+    }
+}
 
 function printBebidas(){
     beb.forEach ( beb => {
@@ -121,7 +119,9 @@ function printFarm(){
         catalogo.innerHTML += imprimir;
 });}
 function printCerv(){
-    cerv.forEach ( cerv => {
+    if (usuarioMenor = true) {
+        catalogo.innerHTML = `<p class="advertmenores">Sos menor de edad y no podés ingresar a esta sección... SOLO MAYORES.</p>`
+    } else {cerv.forEach ( cerv => {
         const imprimir = `
         <div class="bloque">
             <img src="${cerv.img}" class="imgBeb">
@@ -134,8 +134,11 @@ function printCerv(){
         </div>
         `
         catalogo.innerHTML += imprimir;
-});}
+})};}
 function printTaba(){
+    if (usuarioMenor = true) {
+        catalogo.innerHTML = `<p class="advertmenores">Sos menor de edad y no podés ingresar a esta sección... SOLO MAYORES.</p>`
+    } else {
     tabac.forEach ( tabac => {
         const imprimir = `
         <div class="bloque">
@@ -149,7 +152,7 @@ function printTaba(){
         </div>
         `
         catalogo.innerHTML += imprimir;
-});}
+})};}
 function printGallet(){
     gallets.forEach ( gallets => {
         const imprimir = `
@@ -203,7 +206,6 @@ divSecciones.addEventListener('click', (e)=>{
 //Listenner boton compra
 catalogo.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(e.target.dataset.id)
     const iterBeb = beb.find( element => {
         element = e.target.dataset.id;
         return elementid = Number(element);
