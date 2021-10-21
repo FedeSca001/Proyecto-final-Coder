@@ -206,7 +206,7 @@ catalogo.addEventListener('click', (e) => {
     console.log(e.target.dataset.id)
     const iterBeb = beb.find( element => {
         element = e.target.dataset.id;
-        return elementid = element
+        return elementid = element;
         });
 });
 
