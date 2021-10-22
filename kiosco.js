@@ -210,10 +210,14 @@ divSecciones.addEventListener('click', (e)=>{
 //Listenner boton compra
 catalogo.addEventListener('click', (e) => {
     e.preventDefault();
-    const iterBeb = beb.find( element => {
+    elementid = beb.find( element => {
         element = e.target.dataset.id;
         return elementid = Number(element);
         });
+    let 
+    //Acá va a recorrer los productos
+    //Traer el elemento que se le hico click
+
 });
 
 //Log usuario
@@ -221,3 +225,22 @@ registrarse.addEventListener("click", () => {
     nuevoUsuario();
     logOk();
 });
+
+//$(".listadoCompra")
+
+function impNuevProd (elementid){
+    beb.forEach ( beb => {
+        const imprimir = `
+        <div class="bloque">
+            <img src="${almac.img}" class="imgBeb">
+            <div class="datos">
+                <h4>${almac.nombre}</h4>
+                <h5>${almac.descp}</h5>
+                <p>${almac.precio}</p>
+            </div>
+            <a href="#" class="butCom" data-id="${almac.id}">Agregar al carrito</a>
+        </div>
+        `
+        visorCarrito.innerHTML += imprimir;
+})
+}
