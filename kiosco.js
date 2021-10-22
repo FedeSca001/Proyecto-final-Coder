@@ -213,7 +213,6 @@ catalogo.addEventListener('click', (e) => {
         elementid = e.target.dataset.id;
         //impNuevProd (elementid);
         });
-
 console.log(elementid);
 });
 
@@ -228,14 +227,11 @@ registrarse.addEventListener("click", () => {
 /*function impNuevProd (elementid){
     beb.forEach ( beb => {
         const imprimir = `
-        <div class="bloque">
-            <img src="${almac.img}" class="imgBeb">
-            <div class="datos">
-                <h4>${almac.nombre}</h4>
-                <h5>${almac.descp}</h5>
-                <p>${almac.precio}</p>
-            </div>
-            <a href="#" class="butCom" data-id="${almac.id}">Agregar al carrito</a>
+        <div>
+            <div class="tablaComp imgCarr"><img src="${}"></div>
+            <div class="tablaComp nomCarr">${}</div>
+            <div class="tablaComp cant"></div>
+            <div class="tablaComp precioCarr">$${}</div>
         </div>
         `
         visorCarrito.innerHTML += imprimir;

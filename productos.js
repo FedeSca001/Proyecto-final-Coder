@@ -383,20 +383,20 @@ const gallets = [
         "nombre": "9 de oro Agridulce",
         "descp": "Agridulce",
         "precio": "$75",
-        "id": 73
+        "id": 74
     },
     {
         "img": "images/merengadas.jpg",
         "nombre": "Merengadas",
         "descp": "Paquete grande",
         "precio": "$100",
-        "id": 73
+        "id": 75
     },
     {
         "img": "images/oreo.jpg",
         "nombre": "Oreo",
         "descp": "Grande",
         "precio": "$140",
-        "id": 73
+        "id": 76
     },
 ];
