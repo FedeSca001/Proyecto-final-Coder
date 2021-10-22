@@ -44,7 +44,6 @@ function logOk(){
             }
             return usuarioOk = true;
 }
-
 function printBebidas(){
     beb.forEach ( beb => {
                 const imprimir = `
@@ -210,14 +209,12 @@ divSecciones.addEventListener('click', (e)=>{
 //Listenner boton compra
 catalogo.addEventListener('click', (e) => {
     e.preventDefault();
-    elementid = beb.find( element => {
-        element = e.target.dataset.id;
-        return elementid = Number(element);
+    const recorrer = beb.find( element => {
+        elementid = e.target.dataset.id;
+        //impNuevProd (elementid);
         });
-    let 
-    //Acá va a recorrer los productos
-    //Traer el elemento que se le hico click
 
+console.log(elementid);
 });
 
 //Log usuario
@@ -228,7 +225,7 @@ registrarse.addEventListener("click", () => {
 
 //$(".listadoCompra")
 
-function impNuevProd (elementid){
+/*function impNuevProd (elementid){
     beb.forEach ( beb => {
         const imprimir = `
         <div class="bloque">
@@ -243,4 +240,4 @@ function impNuevProd (elementid){
         `
         visorCarrito.innerHTML += imprimir;
 })
-}
+}*/
