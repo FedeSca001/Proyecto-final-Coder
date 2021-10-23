@@ -1,5 +1,4 @@
-
-const beb = [
+const bebidas = [
     {
         "img": "images/cocagrande.jpg",
         "nombre": "Coca Cola",
@@ -106,8 +105,7 @@ const beb = [
         "id": 015
     },
 ];
-
-const caram = [
+const caramelos = [
     {
         "img": "images/caramasticable.jpg",
         "nombre": "Masticables",
@@ -165,8 +163,7 @@ const caram = [
         "id": 17
     },
 ];
-
-const almac = [
+const almacen = [
     {
         "img": "images/fideo.jpg",
         "nombre": "Fideos",
@@ -210,8 +207,7 @@ const almac = [
         "id": 26
     },
 ];
-
-const chocolts = [
+const chocolates = [
     {
         "img": "images/tofinegro.jpg",
         "nombre": "Tofi",
@@ -248,8 +244,7 @@ const chocolts = [
         "id": 45
     },
 ];
-
-const farm = [
+const farmacia = [
     {
         "img": "images/ibuprofeno.png",
         "nombre": "Ibuprofeno",
@@ -272,8 +267,7 @@ const farm = [
         "id": 33
     },
 ];
-
-const cerv = [
+const cerveza = [
     {
         "img": "images/budbotella.jpg",
         "nombre": "Budweiser botella",
@@ -317,8 +311,7 @@ const cerv = [
         "id": 54
     },
 ];
-
-const tabac = [
+const tabaco = [
     {
         "img": "images/luck.jpg",
         "nombre": "Lucky",
@@ -362,8 +355,7 @@ const tabac = [
         "id": 64
     },
 ];
-
-const gallets = [
+const galletitas = [
     {
         "img": "images/twist.jpg",
         "nombre": "Twistos",
@@ -400,3 +392,4 @@ const gallets = [
         "id": 76
     },
 ];
+const productos = {bebidas, caramelos,almacen,chocolates, farmacia, cerveza, tabaco, galletitas}

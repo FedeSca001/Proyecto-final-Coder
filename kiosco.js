@@ -5,12 +5,20 @@ const direccionUsuario = document.querySelector("#direcc");
 const registrarse = document.querySelector("#registrar");
 const header = document.querySelector("#headerInput");
 const usuarios = [];
-let listaCarrito = [];
 let usuarioOk = false;
 let usuarioMenor = true;
 const divSecciones = document.querySelector('#secciones');
 const catalogo = document.querySelector('.catalogo');
+const buttComp = document.querySelector('.butCom');
 let elementid;
+
+// busco carrito en storage. si existe, lo asigno a la variable. sino, asigno arary vacio
+let listaCarrito = JSON.parse(localStorage.getItem(0)) || [];
+// recibe carrito y lo guarda
+function guardarEnStorage(){
+    localStorage.setItem(0, JSON.stringify(listaCarrito))
+}
+
 
 function Usuario (nombreApellido, telefono, edad, direccion){
     this.nombre= nombreApellido;
@@ -18,6 +26,7 @@ function Usuario (nombreApellido, telefono, edad, direccion){
     this.edad= Number(edad);
     this.direccion= direccion;
 }
+
 
 //Cargar datos NUEVO CLIENTE
 function nuevoUsuario(){
@@ -44,176 +53,50 @@ function logOk(){
             }
             return usuarioOk = true;
 }
-function printBebidas(){
-    beb.forEach ( beb => {
-                const imprimir = `
-        <div class="bloque">
-                <img src="${beb.img}" class="imgBeb">
-                <div class="datos">
-                    <h4>${beb.nombre}</h4>
-                    <h5>${beb.descp}</h5>
-                    <p>${beb.precio}</p>
-                </div>
-                <a href="#" class="butCom" data-id="${beb.id}">Agregar al carrito</a>
-            </div>
-        `
-        catalogo.innerHTML += imprimir;
-        //catalogo.appendChild()
-    });
+
+
+function imprimirCategoria(categoria){
+    // chequea edad de usuario
+    // corta funcion si es menor Y si cat. es cerv. o tab.
+    if ((categoria==="cerveza" || categoria ==="tabaco") && usuarioMenor) {
+       return catalogo.innerHTML = `<p class="advertmenores">Sos menor de edad y no podés ingresar a esta sección... SOLO MAYORES.</p>`
+    }
+
+    productos[categoria].forEach ( producto => {
+        const imprimir = `
+    <div class="bloque">
+       <img src="${producto.img}" class="imgBeb">
+       <div class="datos">
+           <h4>${producto.nombre}</h4>
+           <h5>${producto.descp}</h5>
+           <p>${producto.precio}</p>
+       </div>
+       <a href="#" class="butCom" data-cat="galletitas" data-id="${producto.id}">Agregar al carrito</a>
+   </div>
+   `
+   catalogo.innerHTML += imprimir;
+});
 }
-function printCaramels(){
-    caram.forEach ( caram => {
-        const imprimir = `
-        <div class="bloque">
-            <img src="${caram.img}" class="imgBeb">
-            <div class="datos">
-                <h4>${caram.nombre}</h4>
-                <h5>${caram.descp}</h5>
-                <p>${caram.precio}</p>
-            </div>
-            <a href="#" class="butCom" data-id="${caram.id}">Agregar al carrito</a>
-        </div>
-        `
-        catalogo.innerHTML += imprimir;
-});}
-function printAlmac(){
-    almac.forEach ( almac => {
-        const imprimir = `
-        <div class="bloque">
-            <img src="${almac.img}" class="imgBeb">
-            <div class="datos">
-                <h4>${almac.nombre}</h4>
-                <h5>${almac.descp}</h5>
-                <p>${almac.precio}</p>
-            </div>
-            <a href="#" class="butCom" data-id="${almac.id}">Agregar al carrito</a>
-        </div>
-        `
-        catalogo.innerHTML += imprimir;
-});}
-function printChoc(){
-    chocolts.forEach ( chocolts => {
-        const imprimir = `
-        <div class="bloque">
-            <img src="${chocolts.img}" class="imgBeb">
-            <div class="datos">
-                <h4>${chocolts.nombre}</h4>
-                <h5>${chocolts.descp}</h5>
-                <p>${chocolts.precio}</p>
-            </div>
-            <a href="#" class="butCom" data-id="${chocolts.id}">Agregar al carrito</a>
-        </div>
-        `
-        catalogo.innerHTML += imprimir;
-});}
-function printFarm(){
-    farm.forEach ( farm => {
-        const imprimir = `
-        <div class="bloque">
-            <img src="${farm.img}" class="imgBeb">
-            <div class="datos">
-                <h4>${farm.nombre}</h4>
-                <h5>${farm.descp}</h5>
-                <p>${farm.precio}</p>
-            </div>
-            <a href="#" class="butCom" data-id="${farm.id}">Agregar al carrito</a>
-        </div>
-        `
-        catalogo.innerHTML += imprimir;
-});}
-function printCerv(){
-    if (usuarioMenor == true) {
-        catalogo.innerHTML = `<p class="advertmenores">Sos menor de edad y no podés ingresar a esta sección... SOLO MAYORES.</p>`
-    } else {
-        cerv.forEach ( cerv => {
-        const imprimir = `
-        <div class="bloque">
-            <img src="${cerv.img}" class="imgBeb">
-            <div class="datos">
-                <h4>${cerv.nombre}</h4>
-                <h5>${cerv.descp}</h5>
-                <p>${cerv.precio}</p>
-            </div>
-            <a href="#" class="butCom" data-id="${cerv.id}">Agregar al carrito</a>
-        </div>
-        `
-        catalogo.innerHTML += imprimir;
-})};}
-function printTaba(){
-    if (usuarioMenor == true) {
-        catalogo.innerHTML = `<p class="advertmenores">Sos menor de edad y no podés ingresar a esta sección... SOLO MAYORES.</p>`
-    } else {
-    tabac.forEach ( tabac => {
-        const imprimir = `
-        <div class="bloque">
-            <img src="${tabac.img}" class="imgBeb">
-            <div class="datos">
-                <h4>${tabac.nombre}</h4>
-                <h5>${tabac.descp}</h5>
-                <p>${tabac.precio}</p>
-            </div>
-            <a href="#" class="butCom" data-id="${tabac.id}">Agregar al carrito</a>
-        </div>
-        `
-        catalogo.innerHTML += imprimir;
-})};}
-function printGallet(){
-    gallets.forEach ( gallets => {
-        const imprimir = `
-        <div class="bloque">
-            <img src="${gallets.img}" class="imgBeb">
-            <div class="datos">
-                <h4>${gallets.nombre}</h4>
-                <h5>${gallets.descp}</h5>
-                <p>${gallets.precio}</p>
-            </div>
-            <a href="#" class="butCom" data-id="${gallets.id}">Agregar al carrito</a>
-        </div>
-        `
-        catalogo.innerHTML += imprimir;
-});}
 
 
 //CLICK EN BOTONES DE SECCIONES
 divSecciones.addEventListener('click', (e)=>{
-    //Primero se elimina el contenido existente
-    //Desp se llaman a las funciones Impr
-    if (e.target.classList.contains('bebidas')){
-        catalogo.innerHTML = '';
-        printBebidas();
-    } else if (e.target.classList.contains('caramelos')){
-        catalogo.innerHTML = '';
-        printCaramels();
-    } else if (e.target.classList.contains('almacen')){
-        catalogo.innerHTML = '';
-        printAlmac();
-    } else if (e.target.classList.contains('chocolates')){
-        catalogo.innerHTML = '';
-        printChoc();
-    } else if ((e.target.classList.contains('farmacia'))){
-        catalogo.innerHTML = '';
-        printFarm();
-    } else if ((e.target.classList.contains('cerveza'))){
-        catalogo.innerHTML = '';
-        printCerv();
-    } else if ((e.target.classList.contains('tabaco'))){
-        catalogo.innerHTML = '';
-        printTaba();
-    } else if ((e.target.classList.contains('galletitas'))){
-        catalogo.innerHTML = '';
-        printGallet();
-    }
+     // Primero se elimina el contenido existente
+    catalogo.innerHTML = '';
+    // Defino la categoria con el dataset
+    const categoria = e.target.dataset.cat
+    // imprimo categoria
+    imprimirCategoria(categoria)
 });
 
-//El find va a devolver un valor "id" del producto donde hago click
 //Listenner boton compra
 catalogo.addEventListener('click', (e) => {
-    e.preventDefault();
-    const recorrer = beb.find( element => {
-        elementid = e.target.dataset.id;
-        //impNuevProd (elementid);
-        });
-console.log(elementid);
+    // solo ejecuta si hago click en boton añadir
+    if(e.target.classList.contains("butCom")){
+        const categoria = e.target.dataset.cat
+        const id = e.target.dataset.id
+        añadirAlCarrito(productos[categoria], id)
+    }
 });
 
 //Log usuario
@@ -222,18 +105,20 @@ registrarse.addEventListener("click", () => {
     logOk();
 });
 
-//$(".listadoCompra")
+function añadirAlCarrito(categoria, id) {
+// recibe categoria (array) y ID de producto
+// con find devuelve objeto que contenga mismo id
+// guarda producto en carrito si no existe. sino, aumenta cantidad
+// guarda carrito en storage
 
-/*function impNuevProd (elementid){
-    beb.forEach ( beb => {
-        const imprimir = `
-        <div>
-            <div class="tablaComp imgCarr"><img src="${}"></div>
-            <div class="tablaComp nomCarr">${}</div>
-            <div class="tablaComp cant"></div>
-            <div class="tablaComp precioCarr">$${}</div>
-        </div>
-        `
-        visorCarrito.innerHTML += imprimir;
-})
-}*/
+    let producto = categoria.find(prod=> prod.id == id)
+    let existe = false // POR AHORA. SEGUIR trabajando en esto.
+
+    if(existe){
+        console.log("aca va funcion para aumentar cantidad")
+    } else {
+        listaCarrito.push(producto)
+    }
+
+    guardarEnStorage()
+}
