@@ -10,14 +10,9 @@ let usuarioMenor = true;
 const divSecciones = document.querySelector('#secciones');
 const catalogo = document.querySelector('.catalogo');
 const buttComp = document.querySelector('.butCom');
+const borrarStorage = document.querySelector('.borrarStorage');
 let elementid;
 
-// busco carrito en storage. si existe, lo asigno a la variable. sino, asigno arary vacio
-let listaCarrito = JSON.parse(localStorage.getItem(0)) || [];
-// recibe carrito y lo guarda
-function guardarEnStorage(){
-    localStorage.setItem(0, JSON.stringify(listaCarrito))
-}
 
 
 function Usuario (nombreApellido, telefono, edad, direccion){
@@ -26,7 +21,6 @@ function Usuario (nombreApellido, telefono, edad, direccion){
     this.edad= Number(edad);
     this.direccion= direccion;
 }
-
 
 //Cargar datos NUEVO CLIENTE
 function nuevoUsuario(){
@@ -53,7 +47,11 @@ function logOk(){
             }
             return usuarioOk = true;
 }
-
+//LOG usuario
+registrarse.addEventListener("click", () => { 
+    nuevoUsuario();
+    logOk();
+});
 
 function imprimirCategoria(categoria){
     // chequea edad de usuario
@@ -78,7 +76,6 @@ function imprimirCategoria(categoria){
 });
 }
 
-
 //CLICK EN BOTONES DE SECCIONES
 divSecciones.addEventListener('click', (e)=>{
      // Primero se elimina el contenido existente
@@ -89,7 +86,32 @@ divSecciones.addEventListener('click', (e)=>{
     imprimirCategoria(categoria)
 });
 
-//Listenner boton compra
+
+// busco carrito en storage. si existe, lo asigno a la variable. sino, asigno arary vacio
+let listaCarrito = JSON.parse(localStorage.getItem(0)) || [];
+// recibe carrito y lo guarda
+function guardarEnStorage(){
+    localStorage.setItem(0, JSON.stringify(listaCarrito))
+}
+
+function añadirAlCarrito(categoria, id) {
+// recibe categoria (array) y ID de producto
+// con find devuelve objeto que contenga mismo id
+// guarda producto en carrito si no existe. sino, aumenta cantidad
+// guarda carrito en storage
+
+    let producto = categoria.find(prod=> prod.id == id)
+    let existe = false // POR AHORA.
+    
+    if(existe){
+        
+    } else {
+        listaCarrito.push(producto)
+    }
+
+    guardarEnStorage()
+}
+
 catalogo.addEventListener('click', (e) => {
     // solo ejecuta si hago click en boton añadir
     if(e.target.classList.contains("butCom")){
@@ -99,26 +121,6 @@ catalogo.addEventListener('click', (e) => {
     }
 });
 
-//Log usuario
-registrarse.addEventListener("click", () => { 
-    nuevoUsuario();
-    logOk();
-});
+//BORRA EL LOCALSTORAGE
+borrarStorage.addEventListener('click', ()=>{localStorage.clear()});
 
-function añadirAlCarrito(categoria, id) {
-// recibe categoria (array) y ID de producto
-// con find devuelve objeto que contenga mismo id
-// guarda producto en carrito si no existe. sino, aumenta cantidad
-// guarda carrito en storage
-
-    let producto = categoria.find(prod=> prod.id == id)
-    let existe = false // POR AHORA. SEGUIR trabajando en esto.
-
-    if(existe){
-        console.log("aca va funcion para aumentar cantidad")
-    } else {
-        listaCarrito.push(producto)
-    }
-
-    guardarEnStorage()
-}
