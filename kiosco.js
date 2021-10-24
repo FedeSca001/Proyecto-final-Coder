@@ -10,7 +10,6 @@ let usuarioMenor = true;
 const divSecciones = document.querySelector('#secciones');
 const catalogo = document.querySelector('.catalogo');
 const buttComp = document.querySelector('.butCom');
-const borrarStorage = document.querySelector('.borrarStorage');
 let elementid;
 
 
@@ -122,5 +121,5 @@ catalogo.addEventListener('click', (e) => {
 });
 
 //BORRA EL LOCALSTORAGE
-borrarStorage.addEventListener('click', ()=>{localStorage.clear()});
+$('.borrarStorage').on('click', ()=>{localStorage.clear()});
 
