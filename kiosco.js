@@ -11,6 +11,7 @@ const divSecciones = document.querySelector('#secciones');
 const catalogo = document.querySelector('.catalogo');
 const buttComp = document.querySelector('.butCom');
 let elementid;
+const visorCompra = document.querySelector('.listaCompra');
 
 
 
@@ -98,17 +99,24 @@ function añadirAlCarrito(categoria, id) {
 // con find devuelve objeto que contenga mismo id
 // guarda producto en carrito si no existe. sino, aumenta cantidad
 // guarda carrito en storage
-
-    let producto = categoria.find(prod=> prod.id == id)
-    let existe = false // POR AHORA.
-    
-    if(existe){
-        
-    } else {
-        listaCarrito.push(producto)
-    }
-
-    guardarEnStorage()
+    visorCompra.innerHTML = '';
+    let producto = categoria.find(prod=> prod.id == id);
+    listaCarrito.push(producto);
+    guardarEnStorage();
+    listaCarrito.forEach ( prod => {
+    const imprimir = `
+    <div class="compra">
+       <img src="${prod.img}" class="imgCompra">
+       <div class="datosCompra">
+           <h2>${prod.nombre}</h2>
+           <h5>${prod.descp}</h5>
+           <h3>${prod.precio}</h3>
+       </div>
+       <a href="#" class="delete">Borrar</a>
+   </div>
+   `
+   visorCompra.innerHTML += imprimir;
+    });
 }
 
 catalogo.addEventListener('click', (e) => {
@@ -121,5 +129,7 @@ catalogo.addEventListener('click', (e) => {
 });
 
 //BORRA EL LOCALSTORAGE
-$('.borrarStorage').on('click', ()=>{localStorage.clear()});
-
+$('.borrarStorage').on('click', ()=>{
+    listaCarrito = [];
+    visorCompra.innerHTML='';
+    localStorage.clear()});

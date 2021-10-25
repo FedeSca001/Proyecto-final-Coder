@@ -86,3 +86,12 @@ body {
 .tablaComp {
     display: inline-block;
 }
+.compra {
+    display: inline-block;
+}
+.lista {
+    background-color: white;
+}
+.imgCompra{
+    width: 50px;
+}
