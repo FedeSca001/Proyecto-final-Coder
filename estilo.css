@@ -87,11 +87,16 @@ body {
     display: inline-block;
 }
 .compra {
-    display: inline-block;
+    display: inline;
 }
 .lista {
     background-color: white;
+    padding: 20px;
 }
 .imgCompra{
     width: 50px;
+    display: inline-block;
+}
+h2 h3 h5 {
+    display: block;
 }

@@ -61,17 +61,16 @@ function imprimirCategoria(categoria){
     }
 
     productos[categoria].forEach ( producto => {
-        const imprimir = `
-    <div class="bloque">
-       <img src="${producto.img}" class="imgBeb">
+        const imprimir = 
+    `<div class="bloque">
+       <img src="${producto.img}" class="imgProduct">
        <div class="datos">
            <h4>${producto.nombre}</h4>
            <h5>${producto.descp}</h5>
            <p>${producto.precio}</p>
        </div>
-       <a href="#" class="butCom" data-cat="galletitas" data-id="${producto.id}">Agregar al carrito</a>
-   </div>
-   `
+       <a href="#" class="butCom" data-cat="${categoria}" data-id="${producto.id}">Agregar al carrito</a>
+   </div>`
    catalogo.innerHTML += imprimir;
 });
 }
