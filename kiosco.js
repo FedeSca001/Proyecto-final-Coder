@@ -12,8 +12,27 @@ const catalogo = document.querySelector('.catalogo');
 const buttComp = document.querySelector('.butCom');
 let elementid;
 const visorCompra = document.querySelector('.listaCompra');
+const totalApagar = document.querySelector('.totalPagar');
 
-
+//Al iniciar la página imprime si hay algo en el localStorage
+window.addEventListener("load", ()=> {
+    listaCarrito.forEach ( prod => {
+        const imprimir = `
+        <div class="compra">
+           <img src="${prod.img}" class="imgCompra">
+           <div class="datosCompra">
+               <h2>${prod.nombre}</h2>
+               <h5>${prod.descp}</h5>
+               <h3>${prod.precio}</h3>
+           </div>
+           <button class="delete" id="delete">Borrar</button>
+       </div>
+       `
+       visorCompra.innerHTML += imprimir;
+       //style="display: none"
+       //$(".compra").show(900);
+       });
+    })
 
 function Usuario (nombreApellido, telefono, edad, direccion){
     this.nombre= nombreApellido;
@@ -72,7 +91,7 @@ function imprimirCategoria(categoria){
        <a href="#" class="butCom" data-cat="${categoria}" data-id="${producto.id}">Agregar al carrito</a>
    </div>`
    catalogo.innerHTML += imprimir;
-});
+   });
 }
 
 //CLICK EN BOTONES DE SECCIONES
@@ -109,13 +128,16 @@ function añadirAlCarrito(categoria, id) {
        <div class="datosCompra">
            <h2>${prod.nombre}</h2>
            <h5>${prod.descp}</h5>
-           <h3>${prod.precio}</h3>
+           <h3 class="precio">${prod.precio}</h3>
        </div>
-       <a href="#" class="delete">Borrar</a>
+       <button class="delete" id="delete">Borrar</button>
    </div>
    `
    visorCompra.innerHTML += imprimir;
-    });
+   //style="display: none"
+   //$(".compra").show(900);
+   });
+   precioTotal();
 }
 
 catalogo.addEventListener('click', (e) => {
@@ -131,4 +153,18 @@ catalogo.addEventListener('click', (e) => {
 $('.borrarStorage').on('click', ()=>{
     listaCarrito = [];
     visorCompra.innerHTML='';
-    localStorage.clear()});
+    localStorage.clear();
+});
+
+/*$(".datosCompra").mouseenter( ()=>{
+    $(this).css("font-size","15pt")} ).mouseleave( ()=>{
+        $(this).css("font-size","9pt")
+});*/
+
+
+function precioTotal (){
+    listaCarrito.forEach( prod => {
+    const precio = Number(prod.precio)
+    visorCompra.innerHTML += precio;
+    })
+}

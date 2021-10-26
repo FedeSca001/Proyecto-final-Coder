@@ -74,13 +74,14 @@ body {
     display: list-item;
 }
 .catalogo img {
-    height: 100px;
+    height: 50px;
 }
 #logo {
     height: 400px;
 }
 .bloque {
     display: inline-block;
+    width: 80px;
     padding: 30px;
 }
 .tablaComp {
@@ -88,9 +89,11 @@ body {
 }
 .compra {
     display: inline;
+    width: 90%;
 }
 .lista {
     background-color: white;
+    width: 100%;
     padding: 20px;
 }
 .imgCompra{
@@ -99,4 +102,7 @@ body {
 }
 h2 h3 h5 {
     display: block;
+}
+.datosCompra {
+    font-size: 9pt;
 }
