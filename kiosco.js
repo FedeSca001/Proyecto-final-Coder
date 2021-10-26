@@ -13,6 +13,7 @@ const buttComp = document.querySelector('.butCom');
 let elementid;
 const visorCompra = document.querySelector('.listaCompra');
 const totalApagar = document.querySelector('.totalPagar');
+let precio = 0;
 
 //Al iniciar la página imprime si hay algo en el localStorage
 window.addEventListener("load", ()=> {
@@ -152,7 +153,9 @@ catalogo.addEventListener('click', (e) => {
 //BORRA EL LOCALSTORAGE
 $('.borrarStorage').on('click', ()=>{
     listaCarrito = [];
+    precio = 0;
     visorCompra.innerHTML='';
+    totalApagar.innerHTML = '';
     localStorage.clear();
 });
 
@@ -164,7 +167,7 @@ $('.borrarStorage').on('click', ()=>{
 
 function precioTotal (){
     listaCarrito.forEach( prod => {
-    const precio = Number(prod.precio)
-    visorCompra.innerHTML += precio;
+    precio = Number(prod.precio += prod.precio);
+    totalApagar.innerHTML += precio;
     })
 }

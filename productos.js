@@ -160,7 +160,7 @@ const caramelos = [
         "nombre": "Moritas",
         "descp": "Venta al peso",
         "precio": 30,
-        "id": 17
+        "id": 18
     },
 ];
 const almacen = [
