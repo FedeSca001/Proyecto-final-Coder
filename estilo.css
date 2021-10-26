@@ -36,8 +36,8 @@ body {
     display: grid;
     gap: 8px;
     grid-template: 
-    "header" 15%
-    "nav"    10%
+    "header" 7%
+    "nav"    7%
     "article" auto
     "aside"   20%;
 }
@@ -46,8 +46,8 @@ body {
 
 .grid-container {
     grid-template: 
-    "header  header" 15%
-    "nav     nav"    10%
+    "header  header" 7%
+    "nav     nav"    7%
     "article aside"  auto/
     auto      35%;}
 }
@@ -88,21 +88,24 @@ body {
     display: inline-block;
 }
 .compra {
-    display: inline;
+    display: inline-block;
+    margin: 15px;
     width: 90%;
 }
 .lista {
     background-color: white;
     width: 100%;
-    padding: 20px;
+    padding: 10px;
 }
 .imgCompra{
     width: 50px;
-    display: inline-block;
 }
 h2 h3 h5 {
     display: block;
 }
 .datosCompra {
-    font-size: 9pt;
+    font-size: 12pt;
+}
+.totalPagar {
+    font-size: 20pt;
 }

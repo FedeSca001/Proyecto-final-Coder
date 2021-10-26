@@ -11,8 +11,10 @@ const divSecciones = document.querySelector('#secciones');
 const catalogo = document.querySelector('.catalogo');
 const buttComp = document.querySelector('.butCom');
 let elementid;
+let listaCarrito = JSON.parse(localStorage.getItem(0)) || [];
 const visorCompra = document.querySelector('.listaCompra');
 const totalApagar = document.querySelector('.totalPagar');
+const borrarIndividual = document.querySelector('.delete');
 let precio = 0;
 
 //Al iniciar la página imprime si hay algo en el localStorage
@@ -33,7 +35,11 @@ window.addEventListener("load", ()=> {
        //style="display: none"
        //$(".compra").show(900);
        });
-    })
+       listaCarrito.forEach( prod => {
+           precio = precio + Number(prod.precio);
+       })
+       totalApagar.innerHTML = `Total a pagar : $${precio}`;
+})
 
 function Usuario (nombreApellido, telefono, edad, direccion){
     this.nombre= nombreApellido;
@@ -67,11 +73,6 @@ function logOk(){
             }
             return usuarioOk = true;
 }
-//LOG usuario
-registrarse.addEventListener("click", () => { 
-    nuevoUsuario();
-    logOk();
-});
 
 function imprimirCategoria(categoria){
     // chequea edad de usuario
@@ -87,7 +88,7 @@ function imprimirCategoria(categoria){
        <div class="datos">
            <h4>${producto.nombre}</h4>
            <h5>${producto.descp}</h5>
-           <p>${producto.precio}</p>
+           <p>$${producto.precio}</p>
        </div>
        <a href="#" class="butCom" data-cat="${categoria}" data-id="${producto.id}">Agregar al carrito</a>
    </div>`
@@ -95,22 +96,14 @@ function imprimirCategoria(categoria){
    });
 }
 
-//CLICK EN BOTONES DE SECCIONES
-divSecciones.addEventListener('click', (e)=>{
-     // Primero se elimina el contenido existente
-    catalogo.innerHTML = '';
-    // Defino la categoria con el dataset
-    const categoria = e.target.dataset.cat
-    // imprimo categoria
-    imprimirCategoria(categoria)
-});
-
-
-// busco carrito en storage. si existe, lo asigno a la variable. sino, asigno arary vacio
-let listaCarrito = JSON.parse(localStorage.getItem(0)) || [];
 // recibe carrito y lo guarda
 function guardarEnStorage(){
     localStorage.setItem(0, JSON.stringify(listaCarrito))
+}
+
+function precioTotal (prod){
+    precio = precio + Number(prod);
+    totalApagar.innerHTML = `Total a pagar : $${precio}`;
 }
 
 function añadirAlCarrito(categoria, id) {
@@ -121,25 +114,37 @@ function añadirAlCarrito(categoria, id) {
     visorCompra.innerHTML = '';
     let producto = categoria.find(prod=> prod.id == id);
     listaCarrito.push(producto);
+    precioTotal(listaCarrito[listaCarrito.length-1].precio);
     guardarEnStorage();
     listaCarrito.forEach ( prod => {
     const imprimir = `
     <div class="compra">
-       <img src="${prod.img}" class="imgCompra">
-       <div class="datosCompra">
+        <div class="datosCompra">
+        <img src="${prod.img}" class="imgCompra">
            <h2>${prod.nombre}</h2>
            <h5>${prod.descp}</h5>
-           <h3 class="precio">${prod.precio}</h3>
+           <h3 class="precio">$${Number(prod.precio)}</h3>
        </div>
        <button class="delete" id="delete">Borrar</button>
    </div>
    `
-   visorCompra.innerHTML += imprimir;
-   //style="display: none"
-   //$(".compra").show(900);
-   });
-   precioTotal();
+   visorCompra.innerHTML += imprimir;});
 }
+            //EVENTOS
+//LOG usuario
+registrarse.addEventListener("click", () => { 
+    nuevoUsuario();
+    logOk();
+});
+//CLICK EN BOTONES DE SECCIONES
+divSecciones.addEventListener('click', (e)=>{
+    // Primero se elimina el contenido existente
+   catalogo.innerHTML = '';
+   // Defino la categoria con el dataset
+   const categoria = e.target.dataset.cat
+   // imprimo categoria
+   imprimirCategoria(categoria)
+});
 
 catalogo.addEventListener('click', (e) => {
     // solo ejecuta si hago click en boton añadir
@@ -163,11 +168,3 @@ $('.borrarStorage').on('click', ()=>{
     $(this).css("font-size","15pt")} ).mouseleave( ()=>{
         $(this).css("font-size","9pt")
 });*/
-
-
-function precioTotal (){
-    listaCarrito.forEach( prod => {
-    precio = Number(prod.precio += prod.precio);
-    totalApagar.innerHTML += precio;
-    })
-}
