@@ -30,12 +30,10 @@ window.addEventListener("load", (event)=> {
                <h5>${prod.descp}</h5>
                <h3>${prod.precio}</h3>
            </div>
-           <button class="delete" id="delete">Borrar</button>
+           <button class="delete" id="delete" data-numero="${numeroLista}">Borrar</button>
        </div>
        `
        visorCompra.innerHTML += imprimir;
-       //style="display: none"
-       //$(".compra").show(900);
        });
        listaCarrito.forEach( prod => {
            precio = precio + Number(prod.precio);
@@ -109,10 +107,6 @@ function precioTotal (prod){
 }
 
 function añadirAlCarrito(categoria, id) {
-// recibe categoria (array) y ID de producto
-// con find devuelve objeto que contenga mismo id
-// guarda producto en carrito si no existe. sino, aumenta cantidad
-// guarda carrito en storage
     visorCompra.innerHTML = '';
     let producto = categoria.find(prod=> prod.id == id);
     listaCarrito.push(producto);
@@ -127,12 +121,10 @@ function añadirAlCarrito(categoria, id) {
             <h5>${prod.descp}</h5>
             <h3 class="precio">$${Number(prod.precio)}</h3>
         </div>
-        <button class="delete" id="delete" data-id="${numeroLista}">Borrar</button>
-        </div>
-        `
-    numeroLista++
-    visorCompra.innerHTML += imprimir;
-    })}
+        <button class="delete" id="delete" data-numero="${numeroLista++}">Borrar</button>
+        </div>`
+        visorCompra.innerHTML += imprimir;
+})}
             //EVENTOS 
 //LOG usuario
 registrarse.addEventListener("click", () => { 
@@ -174,5 +166,10 @@ $('.seccion').click(function(){
     $('.bloque').hide().each(function(i){
 	$(this).delay(i * 100).fadeIn(100)})})}
 );
+
+$('.delete').click(function(e){
+    e.preventDefault();
+    
+})
 
 document.addEventListener('click', e => console.log(e.target))
