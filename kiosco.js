@@ -16,9 +16,11 @@ const visorCompra = document.querySelector('.listaCompra');
 const totalApagar = document.querySelector('.totalPagar');
 const borrarIndividual = document.querySelector('.delete');
 let precio = 0;
+let numeroLista = 0;
 
 //Al iniciar la página imprime si hay algo en el localStorage
-window.addEventListener("load", ()=> {
+window.addEventListener("load", (event)=> {
+    event.preventDefault()
     listaCarrito.forEach ( prod => {
         const imprimir = `
         <div class="compra">
@@ -117,25 +119,27 @@ function añadirAlCarrito(categoria, id) {
     precioTotal(listaCarrito[listaCarrito.length-1].precio);
     guardarEnStorage();
     listaCarrito.forEach ( prod => {
-    const imprimir = `
-    <div class="compra">
-        <div class="datosCompra">
-        <img src="${prod.img}" class="imgCompra">
-           <h2>${prod.nombre}</h2>
-           <h5>${prod.descp}</h5>
-           <h3 class="precio">$${Number(prod.precio)}</h3>
-       </div>
-       <button class="delete" id="delete">Borrar</button>
-   </div>
-   `
-   visorCompra.innerHTML += imprimir;});
-}
-            //EVENTOS
+        const imprimir = `
+        <div class="compra">
+            <div class="datosCompra">
+            <img src="${prod.img}" class="imgCompra">
+            <h2>${prod.nombre}</h2>
+            <h5>${prod.descp}</h5>
+            <h3 class="precio">$${Number(prod.precio)}</h3>
+        </div>
+        <button class="delete" id="delete" data-id="${numeroLista}">Borrar</button>
+        </div>
+        `
+    numeroLista++
+    visorCompra.innerHTML += imprimir;
+    })}
+            //EVENTOS 
 //LOG usuario
 registrarse.addEventListener("click", () => { 
     nuevoUsuario();
     logOk();
 });
+
 //CLICK EN BOTONES DE SECCIONES
 divSecciones.addEventListener('click', (e)=>{
     // Primero se elimina el contenido existente
@@ -162,9 +166,13 @@ $('.borrarStorage').on('click', ()=>{
     visorCompra.innerHTML='';
     totalApagar.innerHTML = '';
     localStorage.clear();
+    numeroLista = 0;
 });
 
-/*$(".datosCompra").mouseenter( ()=>{
-    $(this).css("font-size","15pt")} ).mouseleave( ()=>{
-        $(this).css("font-size","9pt")
-});*/
+$('.seccion').click(function(){
+    $('.catalogo').ready( function () {
+    $('.bloque').hide().each(function(i){
+	$(this).delay(i * 100).fadeIn(100)})})}
+);
+
+document.addEventListener('click', e => console.log(e.target))
