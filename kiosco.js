@@ -121,9 +121,10 @@ function añadirAlCarrito(categoria, id) {
             <h5>${prod.descp}</h5>
             <h3 class="precio">$${Number(prod.precio)}</h3>
         </div>
-        <button class="delete" id="delete" data-numero="${numeroLista++}">Borrar</button>
+        <button class="delete" id="delete" data-numero="${numeroLista}">Borrar</button>
         </div>`
         visorCompra.innerHTML += imprimir;
+        numeroLista++;
 })}
             //EVENTOS 
 //LOG usuario
