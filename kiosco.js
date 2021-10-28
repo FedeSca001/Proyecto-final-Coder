@@ -124,8 +124,9 @@ function añadirAlCarrito(categoria, id) {
         <button class="delete" id="delete" data-numero="${numeroLista}">Borrar</button>
         </div>`
         visorCompra.innerHTML += imprimir;
-        numeroLista++;
-})}
+})
+    numeroLista++;
+}
             //EVENTOS 
 //LOG usuario
 registrarse.addEventListener("click", () => { 
