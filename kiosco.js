@@ -14,7 +14,6 @@ let elementid;
 let listaCarrito = JSON.parse(localStorage.getItem(0)) || [];
 const visorCompra = document.querySelector('.listaCompra');
 const totalApagar = document.querySelector('.totalPagar');
-const borrarIndividual = document.querySelector('.delete');
 let precio = 0;
 let numeroLista = 0;
 
@@ -30,7 +29,7 @@ window.addEventListener("load", (event)=> {
                <h5>${prod.descp}</h5>
                <h3>${prod.precio}</h3>
            </div>
-           <button class="delete" id="delete" data-numero="${numeroLista}">Borrar</button>
+           <button class="delete" id="delete" data-numero="${(listaCarrito.length-(listaCarrito.length-1))}">Borrar</button>
        </div>
        `
        visorCompra.innerHTML += imprimir;
@@ -106,6 +105,7 @@ function precioTotal (prod){
     totalApagar.innerHTML = `Total a pagar : $${precio}`;
 }
 
+
 function añadirAlCarrito(categoria, id) {
     visorCompra.innerHTML = '';
     let producto = categoria.find(prod=> prod.id == id);
@@ -121,12 +121,10 @@ function añadirAlCarrito(categoria, id) {
             <h5>${prod.descp}</h5>
             <h3 class="precio">$${Number(prod.precio)}</h3>
         </div>
-        <button class="delete" id="delete" data-numero="${numeroLista}">Borrar</button>
+        <button class="delete" id="delete" data-numero="${listaCarrito.length-1}">Borrar</button>
         </div>`
         visorCompra.innerHTML += imprimir;
-})
-    numeroLista++;
-}
+})}
             //EVENTOS 
 //LOG usuario
 registrarse.addEventListener("click", () => { 
@@ -169,9 +167,9 @@ $('.seccion').click(function(){
 	$(this).delay(i * 100).fadeIn(100)})})}
 );
 
-$('.delete').click(function(e){
-    e.preventDefault();
-    
+visorCompra.addEventListener('click', (e)=>{
+    if (e.target.classList.contains('delete')){
+        //const id = listaCarrito.indexOf()
+        //console.log(id) QUEDA BUSCAR EL ID DEL BOTON DONDE SE SELECCIONA BORRAR
+    }
 })
-
-document.addEventListener('click', e => console.log(e.target))
