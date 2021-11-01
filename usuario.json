@@ -1,0 +1,8 @@
+[
+    {
+        "nombre": "nombreUsuario.value",
+        "telef": "telefUsuario.value",
+        "edad": "edadUsuario.value",
+        "direccion": "direccionUsuario.value"
+    }
+]

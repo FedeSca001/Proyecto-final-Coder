@@ -29,7 +29,7 @@ window.addEventListener("load", (event)=> {
                <h5>${prod.descp}</h5>
                <h3>${prod.precio}</h3>
            </div>
-           <button class="delete" id="delete" data-numero="${(listaCarrito.length-(listaCarrito.length-1))}">Borrar</button>
+           <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
        </div>
        `
        visorCompra.innerHTML += imprimir;
@@ -81,7 +81,7 @@ function imprimirCategoria(categoria){
     }
 
     productos[categoria].forEach ( producto => {
-        const imprimir = 
+    const imprimir = 
     `<div class="bloque">
        <img src="${producto.img}" class="imgProduct">
        <div class="datos">
@@ -105,7 +105,6 @@ function precioTotal (prod){
     totalApagar.innerHTML = `Total a pagar : $${precio}`;
 }
 
-
 function añadirAlCarrito(categoria, id) {
     visorCompra.innerHTML = '';
     let producto = categoria.find(prod=> prod.id == id);
@@ -121,7 +120,7 @@ function añadirAlCarrito(categoria, id) {
             <h5>${prod.descp}</h5>
             <h3 class="precio">$${Number(prod.precio)}</h3>
         </div>
-        <button class="delete" id="delete" data-numero="${listaCarrito.length-1}">Borrar</button>
+        <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
         </div>`
         visorCompra.innerHTML += imprimir;
 })}
@@ -134,11 +133,8 @@ registrarse.addEventListener("click", () => {
 
 //CLICK EN BOTONES DE SECCIONES
 divSecciones.addEventListener('click', (e)=>{
-    // Primero se elimina el contenido existente
    catalogo.innerHTML = '';
-   // Defino la categoria con el dataset
    const categoria = e.target.dataset.cat
-   // imprimo categoria
    imprimirCategoria(categoria)
 });
 
@@ -168,8 +164,8 @@ $('.seccion').click(function(){
 );
 
 visorCompra.addEventListener('click', (e)=>{
-    if (e.target.classList.contains('delete')){
-        //const id = listaCarrito.indexOf()
-        //console.log(id) QUEDA BUSCAR EL ID DEL BOTON DONDE SE SELECCIONA BORRAR
-    }
-})
+    if(e.target.classList.contains("delete")){
+        const click = e.target.dataset.numero;
+        //const idDelete = listaCarrito.findIndex((element)=>{element.id == click});
+        console.log(click);
+}})
