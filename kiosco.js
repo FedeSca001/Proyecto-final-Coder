@@ -15,7 +15,6 @@ let listaCarrito = JSON.parse(localStorage.getItem(0)) || [];
 const visorCompra = document.querySelector('.listaCompra');
 const totalApagar = document.querySelector('.totalPagar');
 let precio = 0;
-let numeroLista = 0;
 
 //Al iniciar la página imprime si hay algo en el localStorage
 window.addEventListener("load", (event)=> {
@@ -154,7 +153,6 @@ $('.borrarStorage').on('click', ()=>{
     visorCompra.innerHTML='';
     totalApagar.innerHTML = '';
     localStorage.clear();
-    numeroLista = 0;
 });
 
 $('.seccion').click(function(){
@@ -166,6 +164,23 @@ $('.seccion').click(function(){
 visorCompra.addEventListener('click', (e)=>{
     if(e.target.classList.contains("delete")){
         const click = e.target.dataset.numero;
-        //const idDelete = listaCarrito.findIndex((element)=>{element.id == click});
-        console.log(click);
+        const idDelete = (element) => element.id == click;
+        precio = precio - Number(listaCarrito[listaCarrito.findIndex(idDelete)].precio);
+        totalApagar.innerHTML = `Total a pagar : $${precio}`;
+        listaCarrito.splice(listaCarrito.findIndex(idDelete),1);
+        visorCompra.innerHTML = '';
+        guardarEnStorage();
+        listaCarrito.forEach ( prod => {
+            const imprimir = `
+            <div class="compra">
+                <div class="datosCompra">
+                <img src="${prod.img}" class="imgCompra">
+                <h2>${prod.nombre}</h2>
+                <h5>${prod.descp}</h5>
+                <h3 class="precio">$${Number(prod.precio)}</h3>
+            </div>
+            <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
+            </div>`
+            visorCompra.innerHTML += imprimir;
+    });
 }})
