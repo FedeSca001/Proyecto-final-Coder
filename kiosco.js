@@ -1,7 +1,7 @@
-const nombreUsuario = document.querySelector("#name");
-const telefUsuario = document.querySelector("#telef");
-const edadUsuario = document.querySelector("#edad");
-const direccionUsuario = document.querySelector("#direcc");
+let nombreUsuario = document.querySelector("#name");
+let telefUsuario = document.querySelector("#telef");
+let edadUsuario = document.querySelector("#edad");
+let direccionUsuario = document.querySelector("#direcc");
 const registrarse = document.querySelector("#registrar");
 const header = document.querySelector("#headerInput");
 const usuarios = [];
@@ -19,6 +19,17 @@ let precio = 0;
 //Al iniciar la página imprime si hay algo en el localStorage
 window.addEventListener("load", (event)=> {
     event.preventDefault()
+    $.ajax({
+        url: 'user.json',
+        success: function(user, texStatus, xhr){
+            console.log(user);
+            let indexUser = Math.floor(Math.random() * (20 - 0));
+            nombreUsuario.value = user[indexUser].Nombre;
+            telefUsuario.value = Number(user[indexUser].Telefono);
+            edadUsuario.value = user[indexUser].Edad;
+            direccionUsuario = user[indexUser].Direccion;
+        }
+    })
     listaCarrito.forEach ( prod => {
         const imprimir = `
         <div class="compra">
@@ -39,6 +50,15 @@ window.addEventListener("load", (event)=> {
        totalApagar.innerHTML = `Total a pagar : $${precio}`;
 })
 
+function guardarEnStorage(){
+    localStorage.setItem(0, JSON.stringify(listaCarrito))
+}
+
+function precioTotal (prod){
+    precio = precio + Number(prod);
+    totalApagar.innerHTML = `Total a pagar : $${precio}`;
+}
+
 function Usuario (nombreApellido, telefono, edad, direccion){
     this.nombre= nombreApellido;
     this.telefono= telefono;
@@ -46,7 +66,7 @@ function Usuario (nombreApellido, telefono, edad, direccion){
     this.direccion= direccion;
 }
 
-//Cargar datos NUEVO CLIENTE
+
 function nuevoUsuario(){
     usuarios.push(
     new Usuario(
@@ -55,7 +75,7 @@ function nuevoUsuario(){
         edadUsuario.value,
         direccionUsuario.value));
 }
-//CORROBORAR DATOS
+
 function logOk(){
     if ((usuarios[usuarios.length-1].edad) &&
         (usuarios[usuarios.length-1].nombre) &&
@@ -94,16 +114,6 @@ function imprimirCategoria(categoria){
    });
 }
 
-// recibe carrito y lo guarda
-function guardarEnStorage(){
-    localStorage.setItem(0, JSON.stringify(listaCarrito))
-}
-
-function precioTotal (prod){
-    precio = precio + Number(prod);
-    totalApagar.innerHTML = `Total a pagar : $${precio}`;
-}
-
 function añadirAlCarrito(categoria, id) {
     visorCompra.innerHTML = '';
     let producto = categoria.find(prod=> prod.id == id);
@@ -124,13 +134,12 @@ function añadirAlCarrito(categoria, id) {
         visorCompra.innerHTML += imprimir;
 })}
             //EVENTOS 
-//LOG usuario
+
 registrarse.addEventListener("click", () => { 
     nuevoUsuario();
     logOk();
 });
 
-//CLICK EN BOTONES DE SECCIONES
 divSecciones.addEventListener('click', (e)=>{
    catalogo.innerHTML = '';
    const categoria = e.target.dataset.cat
@@ -146,7 +155,6 @@ catalogo.addEventListener('click', (e) => {
     }
 });
 
-//BORRA EL LOCALSTORAGE
 $('.borrarStorage').on('click', ()=>{
     listaCarrito = [];
     precio = 0;
@@ -168,7 +176,6 @@ visorCompra.addEventListener('click', (e)=>{
         precio = precio - Number(listaCarrito[listaCarrito.findIndex(idDelete)].precio);
         totalApagar.innerHTML = `Total a pagar : $${precio}`;
         listaCarrito.splice(listaCarrito.findIndex(idDelete),1);
-        visorCompra.innerHTML = '';
         guardarEnStorage();
         listaCarrito.forEach ( prod => {
             const imprimir = `
@@ -183,4 +190,5 @@ visorCompra.addEventListener('click', (e)=>{
             </div>`
             visorCompra.innerHTML += imprimir;
     });
-}})
+}});
+
