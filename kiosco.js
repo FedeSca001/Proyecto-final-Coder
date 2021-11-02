@@ -27,7 +27,7 @@ window.addEventListener("load", (event)=> {
             nombreUsuario.value = user[indexUser].Nombre;
             telefUsuario.value = Number(user[indexUser].Telefono);
             edadUsuario.value = user[indexUser].Edad;
-            direccionUsuario = user[indexUser].Direccion;
+            direccionUsuario.value = user[indexUser].Direccion;
         }
     })
     listaCarrito.forEach ( prod => {
