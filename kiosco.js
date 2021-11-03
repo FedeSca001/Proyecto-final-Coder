@@ -16,6 +16,7 @@ const visorCompra = document.querySelector('.listaCompra');
 const totalApagar = document.querySelector('.totalPagar');
 let precio = 0;
 const usuarioRegistrado = document.querySelector('.datosRegistrado');
+let cantidad = 1;
 
 window.addEventListener("load", (event)=> {
     event.preventDefault()
@@ -29,20 +30,7 @@ window.addEventListener("load", (event)=> {
             direccionUsuario.value = user[indexUser].Direccion;
         }
     })
-    listaCarrito.forEach ( prod => {
-        const imprimir = `
-        <div class="compra">
-           <img src="${prod.img}" class="imgCompra">
-           <div class="datosCompra">
-               <h2>${prod.nombre}</h2>
-               <h5>${prod.descp}</h5>
-               <h3>${prod.precio}</h3>
-               <h3 class="precio">$${Number(prod.precio)}</h3>
-               </div>
-               <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
-               </div>`
-       visorCompra.innerHTML += imprimir;
-       });
+    imprimirCarrito(listaCarrito);
        listaCarrito.forEach( prod => {
            precio = precio + Number(prod.precio);
        })
@@ -120,19 +108,26 @@ function añadirAlCarrito(categoria, id) {
     listaCarrito.push(producto);
     precioTotal(listaCarrito[listaCarrito.length-1].precio);
     guardarEnStorage();
+    imprimirCarrito(listaCarrito)
+}
+
+function imprimirCarrito(listaCarrito){
     listaCarrito.forEach ( prod => {
         const imprimir = `
         <div class="compra">
-            <div class="datosCompra">
-            <img src="${prod.img}" class="imgCompra">
-            <h2>${prod.nombre}</h2>
-            <h5>${prod.descp}</h5>
-            <h3 class="precio">$${Number(prod.precio)}</h3>
-        </div>
-        <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
-        </div>`
-        visorCompra.innerHTML += imprimir;
-})}
+           <img src="${prod.img}" class="imgCompra">
+           <div class="datosCompra">
+               <h2>${prod.nombre}</h2>
+               <h5>${prod.descp}</h5>
+               <h3 class="precio">$${Number(prod.precio)}</h3>
+               <h5>Cantidad: ${cantidad}</h5>
+               </div>
+               <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
+               </div>`
+       visorCompra.innerHTML += imprimir;});
+}
+
+
             //EVENTOS 
 
 registrarse.addEventListener("click", () => { 
@@ -193,4 +188,3 @@ visorCompra.addEventListener('click', (e)=>{
             visorCompra.innerHTML += imprimir;
     });
 }});
-

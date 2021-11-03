@@ -5,18 +5,18 @@
 }
 html {
     height: 100%;
-    background: rgb(163, 163, 141);
+    background: rgb(126, 126, 126);
 }
 body {
     min-height: 100%;
 }
 .header {
     grid-area: header;
-    background-color: rgb(163, 163, 141);
+    background-color: rgb(126, 126, 126);
 }
 .nav {
     grid-area: nav;
-    background-color: rgb(163, 163, 141);
+    background-color: rgb(126, 126, 126);
 }
 .article {
     grid-area: article;
@@ -25,12 +25,12 @@ body {
 }
 .aside {
     grid-area: aside;
-    background-color: rgb(163, 163, 141);
+    background-color: rgb(126, 126, 126);
     border-radius: 6px;
 }
 .footer {
     grid-area: footer;
-    background-color: rgb(163, 163, 141);
+    background-color: rgb(126, 126, 126);
 }
 .grid-container{
     display: grid;
@@ -46,8 +46,8 @@ body {
 
 .grid-container {
     grid-template: 
-    "header  aside" 7%
-    "nav     aside"    7%
+    "header  aside" 12%
+    "nav     aside"    12%
     "article aside"  auto/
     auto      35%;}
 }
@@ -63,10 +63,7 @@ body {
     width: 80%;
     margin: 10px auto;
 }
-.listaCompra{
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
+
 .catalogo {
     display: list-item;
     height: 100%;
@@ -75,11 +72,14 @@ body {
     height: 50px;
 }
 #logo {
-    height: 400px;
+    display: block;
+    margin: auto;
+    margin-top: 80px;
+    height: 550px;
 }
 .bloque {
     display: inline-block;
-    width: 120px;
+    width: 180px;
     padding: 10px;
 }
 .tablaComp {
@@ -96,23 +96,24 @@ body {
     height: 100%;
     padding: 10px;
 }
+
 .imgCompra{
     width: 50px;
+    display: block;
 }
 h4 {
     font-size: 12pt;
 }
-h2 h3 h5 {
-    display: block;
-}
+
 .datosCompra {
+    display: block;
     font-size: 12pt;
 }
 .totalPagar {
     font-size: 20pt;
 }
 .datosRegistrado{
-    text-align: center;
+    margin-top: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 16pt;
+    font-size: 12pt;
 }
