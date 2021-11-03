@@ -46,8 +46,8 @@ body {
 
 .grid-container {
     grid-template: 
-    "header  header" 7%
-    "nav     nav"    7%
+    "header  aside" 7%
+    "nav     aside"    7%
     "article aside"  auto/
     auto      35%;}
 }
@@ -63,11 +63,9 @@ body {
     width: 80%;
     margin: 10px auto;
 }
-#listaCompra {
-    display: block;
-    width: 80%;
-    width: 80%;
-    margin: 10px;
+.listaCompra{
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 .catalogo {
     display: list-item;
@@ -112,4 +110,9 @@ h2 h3 h5 {
 }
 .totalPagar {
     font-size: 20pt;
+}
+.datosRegistrado{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16pt;
 }

@@ -15,15 +15,14 @@ let listaCarrito = JSON.parse(localStorage.getItem(0)) || [];
 const visorCompra = document.querySelector('.listaCompra');
 const totalApagar = document.querySelector('.totalPagar');
 let precio = 0;
+const usuarioRegistrado = document.querySelector('.datosRegistrado');
 
-//Al iniciar la página imprime si hay algo en el localStorage
 window.addEventListener("load", (event)=> {
     event.preventDefault()
     $.ajax({
         url: 'user.json',
         success: function(user, texStatus, xhr){
-            console.log(user);
-            let indexUser = Math.floor(Math.random() * (20 - 0));
+            let indexUser = Math.floor(Math.random() * (100 - 0));
             nombreUsuario.value = user[indexUser].Nombre;
             telefUsuario.value = Number(user[indexUser].Telefono);
             edadUsuario.value = user[indexUser].Edad;
@@ -38,10 +37,10 @@ window.addEventListener("load", (event)=> {
                <h2>${prod.nombre}</h2>
                <h5>${prod.descp}</h5>
                <h3>${prod.precio}</h3>
-           </div>
-           <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
-       </div>
-       `
+               <h3 class="precio">$${Number(prod.precio)}</h3>
+               </div>
+               <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
+               </div>`
        visorCompra.innerHTML += imprimir;
        });
        listaCarrito.forEach( prod => {
@@ -89,7 +88,8 @@ function logOk(){
                 header.appendChild(p);
                 return usuarioMenor = true;
             }
-            return usuarioOk = true;
+        usuarioOk = true;
+        usuarioRegistrado.textContent = `Nombre y apellido: ${nombreUsuario.value}, Número de teléfono: ${telefUsuario.value}, Edad: ${edadUsuario.value}, Dirección: ${direccionUsuario.value}.`;
 }
 
 function imprimirCategoria(categoria){
@@ -138,6 +138,7 @@ function añadirAlCarrito(categoria, id) {
 registrarse.addEventListener("click", () => { 
     nuevoUsuario();
     logOk();
+
 });
 
 divSecciones.addEventListener('click', (e)=>{
@@ -176,6 +177,7 @@ visorCompra.addEventListener('click', (e)=>{
         precio = precio - Number(listaCarrito[listaCarrito.findIndex(idDelete)].precio);
         totalApagar.innerHTML = `Total a pagar : $${precio}`;
         listaCarrito.splice(listaCarrito.findIndex(idDelete),1);
+        visorCompra.innerHTML = ``
         guardarEnStorage();
         listaCarrito.forEach ( prod => {
             const imprimir = `
