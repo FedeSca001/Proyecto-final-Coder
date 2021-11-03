@@ -28,13 +28,16 @@ window.addEventListener("load", (event)=> {
             telefUsuario.value = Number(user[indexUser].Telefono);
             edadUsuario.value = user[indexUser].Edad;
             direccionUsuario.value = user[indexUser].Direccion;
+        },
+        error: function(user, texStatus, xhr){
+            console.log(user, texStatus, xhr);
         }
     })
     imprimirCarrito(listaCarrito);
-       listaCarrito.forEach( prod => {
-           precio = precio + Number(prod.precio);
-       })
-       totalApagar.innerHTML = `Total a pagar : $${precio}`;
+    listaCarrito.forEach( prod => {
+        precio = precio + Number(prod.precio);
+    })
+    totalApagar.innerHTML = `Total a pagar : $${precio}`;
 })
 
 function guardarEnStorage(){
