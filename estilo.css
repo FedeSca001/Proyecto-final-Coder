@@ -46,8 +46,8 @@ body {
 
 .grid-container {
     grid-template: 
-    "header  aside" 12%
-    "nav     aside"    12%
+    "header  aside" 8%
+    "nav     aside"    8%
     "article aside"  auto/
     auto      35%;}
 }
@@ -115,4 +115,8 @@ h4 {
     margin-top: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 12pt;
+}
+.totaldelpago{
+    font-size: 25pt;
+    color: rgb(160, 1, 1);
 }

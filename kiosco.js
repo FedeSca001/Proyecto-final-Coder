@@ -72,15 +72,30 @@ function logOk(){
         (usuarios[usuarios.length-1].telefono) &&
         (usuarios[usuarios.length-1].direccion)){            
             if(usuarios[usuarios.length-1].edad >= 18){
-                return usuarioMenor = false;
+            swal({
+                title: "Registado",
+                text: `Nombre y apellido: ${nombreUsuario.value}, Número de teléfono: ${telefUsuario.value}, Edad: ${edadUsuario.value}, Dirección: ${direccionUsuario.value}.`,
+                icon: "success",
+                button: "Seguir en la compra",
+              });
+            } else {
+                swal({
+                    title: "Advertencia",
+                    text: `Tu edad es de ${edadUsuario.value} años por lo que no puedes acceder a todos los productos de la tienda.`,
+                    icon: "warning",
+                    button: "Seguir en la compra",
+                  });
             }} else {
-                const p = document.createElement('p');
-                p.textContent = '¡¡Se deben completar todos los campos!!'
-                header.appendChild(p);
+                swal({
+                    title: "ERROR",
+                    text: '¡¡Se deben completar todos los campos!!',
+                    icon: "error",
+                    button: "Cargar datos",
+                  });
                 return usuarioMenor = true;
             }
+
         usuarioOk = true;
-        usuarioRegistrado.textContent = `Nombre y apellido: ${nombreUsuario.value}, Número de teléfono: ${telefUsuario.value}, Edad: ${edadUsuario.value}, Dirección: ${direccionUsuario.value}.`;
 }
 
 function imprimirCategoria(categoria){
@@ -149,7 +164,6 @@ registrarse.addEventListener("click", () => {
     usuarioRegistrado.textContent = '';
     nuevoUsuario();
     logOk();
-
 });
 
 divSecciones.addEventListener('click', (e)=>{
@@ -186,7 +200,19 @@ visorCompra.addEventListener('click', (e)=>{
         listaCarrito.splice(listaCarrito.findIndex(idDelete),1);
         visorCompra.innerHTML = ``
         guardarEnStorage();
-        listaCarrito.forEach ( prod => {
+        imprimirCarrito(listaCarrito);
+}});
+
+$('.comprarLista').click(function(){
+    if (listaCarrito[0]){
+        swal({
+            title: "Compra exitosa",
+            text: `Felicidades`,
+            icon: "success",
+            button: "Mostrar detalle",
+          });
+          catalogo.innerHTML = '<h2>Tu lista de compra es</h2>'
+          listaCarrito.forEach ( prod => {
             const imprimir = `
             <div class="compra">
                 <div class="datosCompra">
@@ -197,13 +223,16 @@ visorCompra.addEventListener('click', (e)=>{
             </div>
             <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
             </div>`
-            visorCompra.innerHTML += imprimir;
+            catalogo.innerHTML += imprimir;
     });
-}});
-
-$('.comprarLista').click(function(){
-    
-    
-    
-    borrarTodo ();
+            catalogo.innerHTML += `<h3 class="totaldelpago">Total a pagar : $${precio}</h3>`
+          borrarTodo ();
+    } else {
+        swal({
+            title: "El carrito está vacio",
+            text: ``,
+            icon: "error",
+            button: "Cargar productos",
+          });
+    }
 })

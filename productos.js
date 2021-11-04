@@ -63,20 +63,6 @@ const bebidas = [
         "id": 09
     },
     {
-        "img": "images/Sprite-lata.jpg",
-        "nombre": "Sprite",
-        "descp": "lata",
-        "precio": 80,
-        "id": 010
-    },
-    {
-        "img": "images/baggiocaja.png",
-        "nombre": "Baggio grande",
-        "descp": "Caja",
-        "precio": 200,
-        "id": 011
-    },
-    {
         "img": "images/baggiochico.jpg",
         "nombre": "Baggio chico",
         "descp": "Cajita",
