@@ -17,12 +17,13 @@ const totalApagar = document.querySelector('.totalPagar');
 let precio = 0;
 const usuarioRegistrado = document.querySelector('.datosRegistrado');
 let cantidad = 1;
+const comprarLista = document.querySelector('.comprarLista');
 
 window.addEventListener("load", (event)=> {
     event.preventDefault()
     $.ajax({
         url: 'user.json',
-        success: function(user, texStatus, xhr){
+        success: function(user){
             let indexUser = Math.floor(Math.random() * (100 - 0));
             nombreUsuario.value = user[indexUser].Nombre;
             telefUsuario.value = Number(user[indexUser].Telefono);
@@ -30,13 +31,13 @@ window.addEventListener("load", (event)=> {
             direccionUsuario.value = user[indexUser].Direccion;
         },
         error: function(user, texStatus, xhr){
-            console.log(user, texStatus, xhr);
+            console.log('error');
         }
-    })
+    });
     imprimirCarrito(listaCarrito);
     listaCarrito.forEach( prod => {
         precio = precio + Number(prod.precio);
-    })
+    });
     totalApagar.innerHTML = `Total a pagar : $${precio}`;
 })
 
@@ -55,7 +56,6 @@ function Usuario (nombreApellido, telefono, edad, direccion){
     this.edad= Number(edad);
     this.direccion= direccion;
 }
-
 
 function nuevoUsuario(){
     usuarios.push(
@@ -111,7 +111,7 @@ function añadirAlCarrito(categoria, id) {
     listaCarrito.push(producto);
     precioTotal(listaCarrito[listaCarrito.length-1].precio);
     guardarEnStorage();
-    imprimirCarrito(listaCarrito)
+    imprimirCarrito(listaCarrito);
 }
 
 function imprimirCarrito(listaCarrito){
@@ -130,10 +130,19 @@ function imprimirCarrito(listaCarrito){
        visorCompra.innerHTML += imprimir;});
 }
 
+function borrarTodo (){
+    listaCarrito = [];
+    precio = 0;
+    visorCompra.innerHTML='';
+    totalApagar.innerHTML = `Total a pagar : $${precio}`;
+    localStorage.clear();
+}
+
 
             //EVENTOS 
 
-registrarse.addEventListener("click", () => { 
+registrarse.addEventListener("click", () => {
+    usuarioRegistrado.textContent = '';
     nuevoUsuario();
     logOk();
 
@@ -155,11 +164,7 @@ catalogo.addEventListener('click', (e) => {
 });
 
 $('.borrarStorage').on('click', ()=>{
-    listaCarrito = [];
-    precio = 0;
-    visorCompra.innerHTML='';
-    totalApagar.innerHTML = '';
-    localStorage.clear();
+    borrarTodo ();
 });
 
 $('.seccion').click(function(){
@@ -191,3 +196,10 @@ visorCompra.addEventListener('click', (e)=>{
             visorCompra.innerHTML += imprimir;
     });
 }});
+
+$('.comprarLista').click(function(){
+    
+    
+    
+    borrarTodo ();
+})
