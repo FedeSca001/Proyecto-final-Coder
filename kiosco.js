@@ -111,8 +111,12 @@ function añadirAlCarrito(categoria, id) {
     listaCarrito.push(producto);
     precioTotal(listaCarrito[listaCarrito.length-1].precio);
     guardarEnStorage();
-    imprimirCarrito(listaCarrito);
-}
+    const existe = listaCarrito.some(element => {element.id === producto.id});
+        if(existe){
+            console.log('existe', existe);
+        } else {
+            imprimirCarrito(listaCarrito);
+    }}
 
 function imprimirCarrito(listaCarrito){
     listaCarrito.forEach ( prod => {
