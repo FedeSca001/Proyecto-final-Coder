@@ -5,7 +5,6 @@ let direccionUsuario = document.querySelector("#direcc");
 const registrarse = document.querySelector("#registrar");
 const header = document.querySelector("#headerInput");
 const usuarios = [];
-let usuarioOk = false;
 let usuarioMenor = true;
 const divSecciones = document.querySelector('#secciones');
 const catalogo = document.querySelector('.catalogo');
@@ -16,8 +15,8 @@ const visorCompra = document.querySelector('.listaCompra');
 const totalApagar = document.querySelector('.totalPagar');
 let precio = 0;
 const usuarioRegistrado = document.querySelector('.datosRegistrado');
-let cantidad = 1;
 const comprarLista = document.querySelector('.comprarLista');
+const reload = document.querySelector('#reload');
 
 window.addEventListener("load", (event)=> {
     event.preventDefault()
@@ -30,9 +29,7 @@ window.addEventListener("load", (event)=> {
             edadUsuario.value = user[indexUser].Edad;
             direccionUsuario.value = user[indexUser].Direccion;
         },
-        error: function(user, texStatus, xhr){
-            console.log('error');
-        }
+
     });
     imprimirCarrito(listaCarrito);
     listaCarrito.forEach( prod => {
@@ -76,8 +73,9 @@ function logOk(){
                 title: "Registado",
                 text: `Nombre y apellido: ${nombreUsuario.value}, Número de teléfono: ${telefUsuario.value}, Edad: ${edadUsuario.value}, Dirección: ${direccionUsuario.value}.`,
                 icon: "success",
-                button: "Seguir en la compra",
+                button: "Seguir en la compra",                
               });
+              return usuarioMenor = false;
             } else {
                 swal({
                     title: "Advertencia",
@@ -94,17 +92,12 @@ function logOk(){
                   });
                 return usuarioMenor = true;
             }
-
-        usuarioOk = true;
 }
 
 function imprimirCategoria(categoria){
-    // chequea edad de usuario
-    // corta funcion si es menor Y si cat. es cerv. o tab.
     if ((categoria==="cerveza" || categoria ==="tabaco") && usuarioMenor) {
        return catalogo.innerHTML = `<p class="advertmenores">Sos menor de edad y no podés ingresar a esta sección... SOLO MAYORES.</p>`
     }
-
     productos[categoria].forEach ( producto => {
     const imprimir = 
     `<div class="bloque">
@@ -126,12 +119,9 @@ function añadirAlCarrito(categoria, id) {
     listaCarrito.push(producto);
     precioTotal(listaCarrito[listaCarrito.length-1].precio);
     guardarEnStorage();
-    const existe = listaCarrito.some(element => {element.id === producto.id});
-        if(existe){
-            console.log('existe', existe);
-        } else {
-            imprimirCarrito(listaCarrito);
-    }}
+    //ver como solucionar el elemento repetido;
+    imprimirCarrito(listaCarrito);
+}
 
 function imprimirCarrito(listaCarrito){
     listaCarrito.forEach ( prod => {
@@ -142,11 +132,15 @@ function imprimirCarrito(listaCarrito){
                <h2>${prod.nombre}</h2>
                <h5>${prod.descp}</h5>
                <h3 class="precio">$${Number(prod.precio)}</h3>
-               <h5>Cantidad: ${cantidad}</h5>
+               <h5>Cantidad: ${prod.cantidad}</h5>
                </div>
                <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
                </div>`
        visorCompra.innerHTML += imprimir;});
+}
+
+function elemtoExistente (){
+    const existe = listaCarrito.map(prod => prod.id == producto.id);
 }
 
 function borrarTodo (){
@@ -173,11 +167,12 @@ divSecciones.addEventListener('click', (e)=>{
 });
 
 catalogo.addEventListener('click', (e) => {
-    // solo ejecuta si hago click en boton añadir
     if(e.target.classList.contains("butCom")){
         const categoria = e.target.dataset.cat
         const id = e.target.dataset.id
-        añadirAlCarrito(productos[categoria], id)
+        añadirAlCarrito(productos[categoria], id);
+    } else if (e.target.classList.contains("reload")){
+        location.reload();
     }
 });
 
@@ -220,13 +215,13 @@ $('.comprarLista').click(function(){
                 <h2>${prod.nombre}</h2>
                 <h5>${prod.descp}</h5>
                 <h3 class="precio">$${Number(prod.precio)}</h3>
-            </div>
-            <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
-            </div>`
+                <h5>Cantidad: ${prod.cantidad}</h5>
+            </div></div>`
             catalogo.innerHTML += imprimir;
     });
             catalogo.innerHTML += `<h3 class="totaldelpago">Total a pagar : $${precio}</h3>`
-          borrarTodo ();
+            catalogo.innerHTML += `<button class="reload">Recargar página</button>`
+            borrarTodo ();
     } else {
         swal({
             title: "El carrito está vacio",

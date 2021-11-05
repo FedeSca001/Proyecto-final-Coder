@@ -4,6 +4,7 @@ const bebidas = [
         "nombre": "Coca Cola",
         "descp": "Grande",
         "precio": 200,
+        "cantidad": 1,
         "id": 01
     },
     {
@@ -11,6 +12,7 @@ const bebidas = [
         "nombre": "Coca zero",
         "descp": "s/azucar",
         "precio": 199,
+        "cantidad": 1,
         "id": 02
     },
     {
@@ -18,6 +20,7 @@ const bebidas = [
         "nombre": "Coca cola chica",
         "descp": "500ml",
         "precio": 90,
+        "cantidad": 1,
         "id": 03
     },
     {
@@ -25,6 +28,7 @@ const bebidas = [
         "nombre": "Lata de coca cola",
         "descp": "lata fria",
         "precio": 85,
+        "cantidad": 1,
         "id": 04
     },
     {
@@ -32,6 +36,7 @@ const bebidas = [
         "nombre": "Pepsi",
         "descp": "Botella 2L",
         "precio": 200,
+        "cantidad": 1,
         "id": 05
     },
     {
@@ -39,6 +44,7 @@ const bebidas = [
         "nombre": "Pepsi",
         "descp": "Botella 1/2L",
         "precio": 120,
+        "cantidad": 1,
         "id": 06
     },
     {
@@ -46,6 +52,7 @@ const bebidas = [
         "nombre": "Pepsi",
         "descp": "Lata",
         "precio": 80,
+        "cantidad": 1,
         "id": 07
     },
     {
@@ -53,6 +60,7 @@ const bebidas = [
         "nombre": "Sprite 2L",
         "descp": "Botella 2L",
         "precio": 200,
+        "cantidad": 1,
         "id": 08
     },
     {
@@ -60,6 +68,7 @@ const bebidas = [
         "nombre": "Sprite 1/2L",
         "descp": "Botella 1/2L",
         "precio": 120,
+        "cantidad": 1,
         "id": 09
     },
     {
@@ -67,6 +76,7 @@ const bebidas = [
         "nombre": "Baggio chico",
         "descp": "Cajita",
         "precio": 200,
+        "cantidad": 1,
         "id": 012
     },
     {
@@ -74,6 +84,7 @@ const bebidas = [
         "nombre": "Cepita",
         "descp": "Botella 1,5L",
         "precio": 210,
+        "cantidad": 1,
         "id": 013
     },
     {
@@ -81,6 +92,7 @@ const bebidas = [
         "nombre": "Cepita",
         "descp": "Cajita",
         "precio": 70,
+        "cantidad": 1,
         "id": 014
     },
     {
@@ -88,6 +100,7 @@ const bebidas = [
         "nombre": "Cepita",
         "descp": "Botella 1/2L",
         "precio": 90,
+        "cantidad": 1,
         "id": 015
     },
 ];
@@ -97,6 +110,7 @@ const caramelos = [
         "nombre": "Masticables",
         "descp": "Caramelos masticables",
         "precio": 20,
+        "cantidad": 1,
         "id": 11
     },
     {
@@ -104,6 +118,7 @@ const caramelos = [
         "nombre": "Gomitas",
         "descp": "Caramelos Gomita",
         "precio": 24,
+        "cantidad": 1,
         "id": 12
     },
     {
@@ -111,6 +126,7 @@ const caramelos = [
         "nombre": "Caramelos de Miel",
         "descp": "Bolsa de 200u",
         "precio": 160,
+        "cantidad": 1,
         "id": 13
     },
     {
@@ -118,6 +134,7 @@ const caramelos = [
         "nombre": "Caramelos Fizz",
         "descp": "Tiras de sabores",
         "precio": 60,
+        "cantidad": 1,
         "id": 14
     },
     {
@@ -125,6 +142,7 @@ const caramelos = [
         "nombre": "Paleta",
         "descp": "Paleta de caramelo",
         "precio": 80,
+        "cantidad": 1,
         "id": 15
     },
     {
@@ -132,6 +150,7 @@ const caramelos = [
         "nombre": "Caramelos Pico Dulce",
         "descp": "Bolsa de caramelos",
         "precio": 160,
+        "cantidad": 1,
         "id": 16
     },
     {
@@ -139,6 +158,7 @@ const caramelos = [
         "nombre": "Sugus",
         "descp": "Caja de caramelos",
         "precio": 50,
+        "cantidad": 1,
         "id": 17
     },
     {
@@ -146,6 +166,7 @@ const caramelos = [
         "nombre": "Moritas",
         "descp": "Venta al peso",
         "precio": 30,
+        "cantidad": 1,
         "id": 18
     },
 ];
@@ -155,6 +176,7 @@ const almacen = [
         "nombre": "Fideos",
         "descp": "Knor",
         "precio": 70,
+        "cantidad": 1,
         "id": 21
     },
     {
@@ -162,6 +184,7 @@ const almacen = [
         "nombre": "Leche en polvo",
         "descp": "Caja descremada",
         "precio": 250,
+        "cantidad": 1,
         "id": 22
     },
     {
@@ -169,6 +192,7 @@ const almacen = [
         "nombre": "Mermelada",
         "descp": "Sabor durazno",
         "precio": 130,
+        "cantidad": 1,
         "id": 23
     },
     {
@@ -176,6 +200,7 @@ const almacen = [
         "nombre": "Arroz en caja",
         "descp": "Mocovi",
         "precio": 80,
+        "cantidad": 1,
         "id": 24
     },
     {
@@ -183,6 +208,7 @@ const almacen = [
         "nombre": "Arvejas",
         "descp": "Lata",
         "precio": 85,
+        "cantidad": 1,
         "id": 25
     },
     {
@@ -190,6 +216,7 @@ const almacen = [
         "nombre": "Aceite Natura",
         "descp": "2L",
         "precio": 290,
+        "cantidad": 1,
         "id": 26
     },
 ];
@@ -199,6 +226,7 @@ const chocolates = [
         "nombre": "Tofi",
         "descp": "Negro",
         "precio": 40,
+        "cantidad": 1,
         "id": 41
     },
     {
@@ -206,6 +234,7 @@ const chocolates = [
         "nombre": "Tofi",
         "descp": "Blanco",
         "precio": 40,
+        "cantidad": 1,
         "id": 42
     },
     {
@@ -213,6 +242,7 @@ const chocolates = [
         "nombre": "Milka",
         "descp": "60g",
         "precio": 90,
+        "cantidad": 1,
         "id": 43
     },
     {
@@ -220,6 +250,7 @@ const chocolates = [
         "nombre": "Chocolate arcor",
         "descp": "Barra 70g",
         "precio": 70,
+        "cantidad": 1,
         "id": 44
     },
     {
@@ -227,6 +258,7 @@ const chocolates = [
         "nombre": "Chocolate aguila",
         "descp": "Barra 70g",
         "precio": 150,
+        "cantidad": 1,
         "id": 45
     },
 ];
@@ -236,6 +268,7 @@ const farmacia = [
         "nombre": "Ibuprofeno",
         "descp": "Ibu 600mg",
         "precio": 45,
+        "cantidad": 1,
         "id": 31
     },
     {
@@ -243,6 +276,7 @@ const farmacia = [
         "nombre": "Actron",
         "descp": "Caja de 12u",
         "precio": 45,
+        "cantidad": 1,
         "id": 32
     },
     {
@@ -250,6 +284,7 @@ const farmacia = [
         "nombre": "Curitas",
         "descp": "Banditas",
         "precio": 20,
+        "cantidad": 1,
         "id": 33
     },
 ];
@@ -259,6 +294,7 @@ const cerveza = [
         "nombre": "Budweiser botella",
         "descp": "botella 1.5L",
         "precio": 140,
+        "cantidad": 1,
         "id": 51
     },
     {
@@ -266,6 +302,7 @@ const cerveza = [
         "nombre": "Budweiser lata",
         "descp": "Lata 3.75 ml",
         "precio": 100,
+        "cantidad": 1,
         "id": 52
     },
     {
@@ -273,6 +310,7 @@ const cerveza = [
         "nombre": "Andes",
         "descp": "botella 1L",
         "precio": 130,
+        "cantidad": 1,
         "id": 53
     },
     {
@@ -280,6 +318,7 @@ const cerveza = [
         "nombre": "Andes lata",
         "descp": "Lata",
         "precio": 95,
+        "cantidad": 1,
         "id": 54
     },
     {
@@ -287,6 +326,7 @@ const cerveza = [
         "nombre": "Quilmes botella",
         "descp": "Botella 1L",
         "precio": 125,
+        "cantidad": 1,
         "id": 54
     },
     {
@@ -294,6 +334,7 @@ const cerveza = [
         "nombre": "Quilmes lata",
         "descp": "Lata 300ml",
         "precio": 95,
+        "cantidad": 1,
         "id": 54
     },
 ];
@@ -303,6 +344,7 @@ const tabaco = [
         "nombre": "Lucky",
         "descp": "Cant. 10",
         "precio": 130,
+        "cantidad": 1,
         "id": 61
     },
     {
@@ -310,6 +352,7 @@ const tabaco = [
         "nombre": "Lucky mentolado",
         "descp": "Cant. 20",
         "precio": 220,
+        "cantidad": 1,
         "id": 62
     },
     {
@@ -317,6 +360,7 @@ const tabaco = [
         "nombre": "Marlboro",
         "descp": "Cant. 20",
         "precio": 260,
+        "cantidad": 1,
         "id": 63
     },
     {
@@ -324,6 +368,7 @@ const tabaco = [
         "nombre": "Camel",
         "descp": "Cant. 20",
         "precio": 260,
+        "cantidad": 1,
         "id": 64
     },
     {
@@ -331,6 +376,7 @@ const tabaco = [
         "nombre": "Marlboro box",
         "descp": "Cant. 10",
         "precio": 130,
+        "cantidad": 1,
         "id": 64
     },
     {
@@ -338,6 +384,7 @@ const tabaco = [
         "nombre": "Camel box",
         "descp": "Cant 10",
         "precio": 135,
+        "cantidad": 1,
         "id": 64
     },
 ];
@@ -347,6 +394,7 @@ const galletitas = [
         "nombre": "Twistos",
         "descp": "Cont. 50g",
         "precio": 135,
+        "cantidad": 1,
         "id": 71
     },
     {
@@ -354,6 +402,7 @@ const galletitas = [
         "nombre": "9 de oro",
         "descp": "clasicas",
         "precio": 75,
+        "cantidad": 1,
         "id": 72
     },
     {
@@ -361,6 +410,7 @@ const galletitas = [
         "nombre": "9 de oro Agridulce",
         "descp": "Agridulce",
         "precio": 75,
+        "cantidad": 1,
         "id": 74
     },
     {
@@ -368,6 +418,7 @@ const galletitas = [
         "nombre": "Merengadas",
         "descp": "Paquete grande",
         "precio": 100,
+        "cantidad": 1,
         "id": 75
     },
     {
@@ -375,6 +426,7 @@ const galletitas = [
         "nombre": "Oreo",
         "descp": "Grande",
         "precio": 140,
+        "cantidad": 1,
         "id": 76
     },
 ];
