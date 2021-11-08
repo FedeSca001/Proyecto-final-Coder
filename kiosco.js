@@ -83,6 +83,7 @@ function logOk(){
                     icon: "warning",
                     button: "Seguir en la compra",
                   });
+                  return usuarioMenor = true;
             }} else {
                 swal({
                     title: "ERROR",
@@ -118,9 +119,10 @@ function añadirAlCarrito(categoria, id) {
     let producto = categoria.find(prod=> prod.id == id);
     listaCarrito.push(producto);
     precioTotal(listaCarrito[listaCarrito.length-1].precio);
-    guardarEnStorage();
+    elemtoExistente(producto);
     //ver como solucionar el elemento repetido;
     imprimirCarrito(listaCarrito);
+    guardarEnStorage();
 }
 
 function imprimirCarrito(listaCarrito){
@@ -139,8 +141,11 @@ function imprimirCarrito(listaCarrito){
        visorCompra.innerHTML += imprimir;});
 }
 
-function elemtoExistente (){
-    const existe = listaCarrito.map(prod => prod.id == producto.id);
+function elemtoExistente(producto){
+    const existe = listaCarrito.some(prod => prod.id == producto.id);
+    console.log(existe);
+    //console.log (producto)
+    //Acá se debe analizar el producto entrante y prosesarlo para ver si se repite que se sume la cantidad.
 }
 
 function borrarTodo (){
@@ -177,7 +182,7 @@ catalogo.addEventListener('click', (e) => {
 });
 
 $('.borrarStorage').on('click', ()=>{
-    borrarTodo ();
+    borrarTodo();
 });
 
 $('.seccion').click(function(){
@@ -202,7 +207,7 @@ $('.comprarLista').click(function(){
     if (listaCarrito[0]){
         swal({
             title: "Compra exitosa",
-            text: `Felicidades`,
+            text: `El pedido será enviado a ${direccionUsuario.value} a nombre de ${nombreUsuario.value}, cuyo numero telefónico es ${telefUsuario.value}.`,
             icon: "success",
             button: "Mostrar detalle",
           });
