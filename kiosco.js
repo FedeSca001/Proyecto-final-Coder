@@ -117,13 +117,19 @@ function imprimirCategoria(categoria){
 function añadirAlCarrito(categoria, id) {
     visorCompra.innerHTML = '';
     let producto = categoria.find(prod=> prod.id == id);
-    elemtoExistente(producto);
+    const existe = listaCarrito.some((e) => e.id == producto.id);
+    if (existe){
+        const index = listaCarrito.findIndex((carrito) => carrito.id == producto.id);
+        listaCarrito[index].cantidad = Number(listaCarrito[index].cantidad) +1;
+        imprimirCarrito(listaCarrito);
+        precioTotal(listaCarrito[listaCarrito.length-1].precio);
+        guardarEnStorage();
+    } else {
     listaCarrito.push(producto);
-    //ver como solucionar el elemento repetido;
     imprimirCarrito(listaCarrito);
     precioTotal(listaCarrito[listaCarrito.length-1].precio);
     guardarEnStorage();
-}
+}}
 
 function imprimirCarrito(listaCarrito){
     listaCarrito.forEach ( prod => {
@@ -139,13 +145,6 @@ function imprimirCarrito(listaCarrito){
                <button class="delete" id="delete" data-numero="${prod.id}">Borrar</button>
                </div>`
        visorCompra.innerHTML += imprimir;});
-}
-
-function elemtoExistente(producto){
-    const existe = listaCarrito.some(prod => prod.id == producto.id);
-    console.log(existe);
-    //console.log (producto)
-    //Acá se debe analizar el producto entrante y prosesarlo para ver si se repite que se sume la cantidad.
 }
 
 function borrarTodo (){
