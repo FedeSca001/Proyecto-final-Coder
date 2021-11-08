@@ -117,11 +117,11 @@ function imprimirCategoria(categoria){
 function añadirAlCarrito(categoria, id) {
     visorCompra.innerHTML = '';
     let producto = categoria.find(prod=> prod.id == id);
-    listaCarrito.push(producto);
-    precioTotal(listaCarrito[listaCarrito.length-1].precio);
     elemtoExistente(producto);
+    listaCarrito.push(producto);
     //ver como solucionar el elemento repetido;
     imprimirCarrito(listaCarrito);
+    precioTotal(listaCarrito[listaCarrito.length-1].precio);
     guardarEnStorage();
 }
 
