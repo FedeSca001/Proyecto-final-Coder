@@ -29,7 +29,6 @@ window.addEventListener("load", (event)=> {
             edadUsuario.value = user[indexUser].Edad;
             direccionUsuario.value = user[indexUser].Direccion;
         },
-
     });
     imprimirCarrito(listaCarrito);
     listaCarrito.forEach( prod => {
@@ -159,7 +158,7 @@ function borrarTodo (){
             //EVENTOS 
 
 registrarse.addEventListener("click", () => {
-    usuarioRegistrado.textContent = '';
+    usuarioRegistrado.innerHTML = `<p>Nombre y apellido: ${nombreUsuario.value}, Número de teléfono: ${telefUsuario.value}, Edad: ${edadUsuario.value}, Dirección: ${direccionUsuario.value}</p>`;
     nuevoUsuario();
     logOk();
 });
