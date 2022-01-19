@@ -17,7 +17,8 @@ let precio = 0;
 const usuarioRegistrado = document.querySelector('.datosRegistrado');
 const comprarLista = document.querySelector('.comprarLista');
 const reload = document.querySelector('#reload');
-const elian = 'elian'
+
+
 
 window.addEventListener("load", (event)=> {
     event.preventDefault()
