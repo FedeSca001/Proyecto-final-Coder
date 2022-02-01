@@ -102,7 +102,7 @@ function imprimirCategoria(categoria){
     }
     productos[categoria].forEach ( producto => {
     const imprimir = 
-    `<div class="bloque">
+    `<div class="bloque col-lg-4 col-md-6">
        <img src="${producto.img}" class="imgProduct">
        <div class="datos">
            <h4>${producto.nombre}</h4>
