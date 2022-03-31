@@ -17,8 +17,12 @@ let precio = 0;
 const usuarioRegistrado = document.querySelector('.datosRegistrado');
 const comprarLista = document.querySelector('.comprarLista');
 const reload = document.querySelector('#reload');
-
-
+const num = prompt('ingresa el numero')
+if (num === 8) {
+    alert('es igual a 8')
+} else {
+    alert('nombre no es igual a 8')
+}
 
 window.addEventListener("load", (event)=> {
     event.preventDefault()
