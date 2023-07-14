@@ -18,7 +18,7 @@ const usuarioRegistrado = document.querySelector('.datosRegistrado');
 const comprarLista = document.querySelector('.comprarLista');
 const reload = document.querySelector('#reload');
 
-/* Deployed: url = https://kiosco-fantacia.netlify.app/ */
+/* Deployed: url = https://kiosco-fantacia.netlify.app/  */
 
 window.addEventListener("load", (event)=> {
     event.preventDefault()
@@ -35,7 +35,7 @@ window.addEventListener("load", (event)=> {
     imprimirCarrito(listaCarrito);
     listaCarrito.forEach( prod => {
         precio = precio + Number(prod.precio);
-    });
+    });     
     totalApagar.innerHTML = `Total a pagar : $${precio}`;
 })
 
