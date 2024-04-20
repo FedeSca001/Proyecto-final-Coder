@@ -1,12 +1,227 @@
-*{
-    padding: 0;
-    margin: 0;
-    list-style: none;
+/* Estilos para el header */
+.header {
+    background-color: #f0f0f0; /* Color de fondo */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
 }
-.imgCompra{
-    width: 50px;
+
+/* Estilos para los elementos dentro del header */
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-group-prepend {
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.input-group-prepend label {
     display: block;
+    margin-bottom: 5px; /* Espaciado inferior entre etiqueta y campo de entrada */
+    font-weight: bold; /* Texto en negrita */
 }
-.imgProduct{
-    height: 80px;
+
+.form-control {
+    width: 100%; /* Ancho completo */
+    padding: 8px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.btn-success {
+    width: 100%; /* Ancho completo */
+    padding: 12px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #28a745; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    margin: 20px 0px;
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Color de fondo al pasar el mouse */
+}
+
+
+/* Estilos para el navbar */
+.navbar {
+    background-color: rgb(251, 255, 0); /* Color de fondo */
+    padding: 10px; /* Espaciado interno */
+    box-shadow: 0 2px 4px rgba(241, 228, 103, 0.712); /* Sombra */
+}
+
+/* Estilos para los botones dentro del navbar */
+.navbar button {
+    margin-right: 10px; /* Espaciado entre botones */
+    border: none; /* Sin borde */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 8px 16px; /* Espaciado interno */
+    background-color: #c7ca11; /* Color de fondo */
+    color: #000000; /* Color del texto */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Estilos para los botones cuando se pasa el mouse sobre ellos */
+.navbar button:hover {
+    background-color: #ff7300; /* Color de fondo al pasar el mouse */
+    cursor: pointer; /* Cambia el cursor */
+}
+
+/* Estilos para el artículo */
+.article {
+    background-color: #f0f0f0; /* Color de fondo */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.catalogo {
+    text-align: center; /* Centra el contenido */
+}
+
+.catalogo img {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Estilos para el aside */
+.aside {
+    background-color: #f0f0f0; /* Color de fondo */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.lista {
+    text-align: center; /* Centra el contenido */
+}
+
+.títuloLista {
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.listaCompra {
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.totalPagar {
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.comprarLista,
+.borrarStorage {
+    width: 100%; /* Ancho completo */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+/* Estilos para las tarjetas de productos */
+/* Estilos para el contenedor de las tarjetas */
+.catalogo {
+    display: flex; /* Usa flexbox */
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en filas */
+    justify-content: space-between; /* Distribuye el espacio entre las tarjetas */
+}
+
+/* Estilos para las tarjetas de productos */
+.bloque {
+    flex: 0 0 calc(33.33% - 20px); /* Cada tarjeta ocupará el 33.33% del ancho total menos el espacio entre ellas */
+    background-color: #fff; /* Color de fondo */
+    border: 1px solid #e0e0e0; /* Borde */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espaciado inferior */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    transition: box-shadow 0.3s ease; /* Transición suave */
+    display: flex; /* Usa flexbox */
+    flex-direction: column; /* Distribuye los elementos en columnas */
+}
+
+.bloque:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra al pasar el mouse */
+}
+
+.imgProduct {
+    height: 40px; /* Altura máxima de la imagen */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+
+.datos {
+    flex: 1; /* El contenido se expande para ocupar todo el espacio disponible */
+}
+
+.datos h4 {
+    font-size: 18px; /* Tamaño del título */
+    margin-bottom: 5px; /* Espaciado inferior */
+}
+
+.datos h5 {
+    font-size: 16px; /* Tamaño del subtítulo */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.datos p {
+    font-size: 16px; /* Tamaño del precio */
+    font-weight: bold; /* Texto en negrita */
+    color: #28a745; /* Color del precio */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.butCom {
+    background-color: #28a745; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.butCom:hover {
+    background-color: #218838; /* Color de fondo del botón al pasar el mouse */
+    cursor: pointer; /* Cambia el cursor */
+}
+
+/* Estilos para las compras del carrito */
+.compra {
+    display: flex; /* Usa flexbox */
+    align-items: center; /* Centra verticalmente */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.imgCompra {
+    max-width: 100px; /* Ancho máximo de la imagen */
+    max-height: 100px; /* Altura máxima de la imagen */
+    margin-right: 20px; /* Espaciado derecho */
+}
+
+.datosCompra h2 {
+    font-size: 18px; /* Tamaño del título */
+    margin-bottom: 5px; /* Espaciado inferior */
+}
+
+.datosCompra h5 {
+    font-size: 16px; /* Tamaño del subtítulo */
+    margin-bottom: 5px; /* Espaciado inferior */
+}
+
+.datosCompra .precio {
+    font-size: 16px; /* Tamaño del precio */
+    font-weight: bold; /* Texto en negrita */
+    color: #28a745; /* Color del precio */
+    margin-bottom: 5px; /* Espaciado inferior */
+}
+
+.delete {
+    background-color: #dc3545; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    padding: 8px 16px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.delete:hover {
+    background-color: #c82333; /* Color de fondo del botón al pasar el mouse */
 }
